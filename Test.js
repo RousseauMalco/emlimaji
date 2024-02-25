@@ -14,7 +14,12 @@ const names = ["Josie Melendez",
     "Caroline Simmons",
     "Valerie Mckay",
     "Eric Murphy",
-    "Harley Bowman"];
+    "Harley Bowman",
+    "Linh",
+    "Jim",
+    "Emma",
+    "Malcolm",
+    "Paul"];
 
 // const names = ["Henry", "Joe", "Jen", "carl", "Jason M. Oli"];
 
@@ -25,45 +30,39 @@ const group4 = [];
 
 const groupGroup = [group1, group2, group3, group4];
 
+// the teacher chooses the # of groups
 let tot_groups = 4;
-let desired_size = 4;
+let desired_size = Math.floor(names.length/tot_groups);
 
-// if (Math.floor(names.length % tot_groups < tot_groups) < ) {
-
-// }
 let max_size = desired_size + 1
-
-if (group1[1] != null) {
-    console.log("not reset");
-}
 
 for (let i = 0; i < names.length; i++) {
     let position = getRandomInt(4);
-    console.log(position);
 
-    if (position == 0 && group1.length <= desired_size) {
-        console.log("iteration" + i + "i'm in this conditional 1");
+    if (position == 0 && group1.length < desired_size) {
         group1.push(names[i]);
-    } else if (position == 1 && group2.length <= desired_size) {
-        console.log("iteration" + i + "i'm in this conditional 2");
-
+    } else if (position == 1 && group2.length < desired_size) {
         group2.push(names[i]);
-    } else if (position == 2 && group3.length <= desired_size) {
-        console.log("iteration" + i + "i'm in this conditional 3");
-
+    } else if (position == 2 && group3.length < desired_size) {
         group3.push(names[i]);
-    } else if (position == 3 && group4.length <= desired_size) {
-        console.log("iteration" + i + "i'm in this conditional 4");
-
+    } else if (position == 3 && group4.length < desired_size) {
         group4.push(names[i]);
     } else {
-
-        // for (let )
-        console.log("In else conditional at " + i + " iteration");
-        for (let j = 0; j < groupGroup.length; j++) {
-            if (groupGroup[j].length < max_size) {
-                groupGroup[j].push(names[i]);
+        let placed = false;
+        for (let k = 0; k < groupGroup.length; k++) {
+            if (groupGroup[k].length < desired_size) {
+                groupGroup[k].push(names[i]);
+                placed = true;
                 break;
+            }
+        }
+
+        if (placed == false) {
+            for (let j = 0; j < groupGroup.length; j++) {
+                if (groupGroup[j].length < max_size) {
+                    groupGroup[j].push(names[i]);
+                    break;
+                }
             }
         }
     }
