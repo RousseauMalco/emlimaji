@@ -18,8 +18,7 @@ const names = ["Josie Melendez",
     "Linh",
     "Jim",
     "Emma",
-    "Malcolm",
-    "Paul"];
+    "Malcolm"];
 
 // const names = ["Henry", "Joe", "Jen", "carl", "Jason M. Oli"];
 
