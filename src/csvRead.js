@@ -14,7 +14,7 @@ papaparse.parse(content, {
         rows = results.data;
         rows.shift(); // shift removes the first element and returns that value
 
-        for(var i=0; i < rows.length-1; i++){
+        for(var i=0; i < rows.length; i++){
             names[i] = rows[i][1];
         }
         
