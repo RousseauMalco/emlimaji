@@ -1,5 +1,10 @@
 {
+  "type": "module",
   "dependencies": {
     "papaparse": "^5.4.1"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
+
 }

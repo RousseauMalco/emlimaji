@@ -31,20 +31,22 @@
     
     <div class="container">
         <div class="center">
-            <input type="file" name="csvFile" accept=".csv">
+            <input type="file" name="csvFile" accept=".csv" id="fileInput">
         </div>
     </div>
 
     <div class="container">
         <div class="center">
-            <div class="rectangle">
+            <div class="rectangle" id="output">
+                
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="center">
-            <button type="button" onclick="alert('you made new teams :D')">Make New Teams!</button>
+            <button type="button" id = "myButton">Make New Teams!</button>
+            <script src="./GroupRandomize.js"></script>
         </div>
     </div>
 

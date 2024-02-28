@@ -1,6 +1,11 @@
-var fs = require("fs")
-let papaparse = require('papaparse')
-let file = "csvTest.csv"
+
+import fs from 'fs';
+import papaparse from 'papaparse';
+export function csvRead(csv) {
+
+// var fs = require("fs");
+// let papaparse = require('papaparse');
+let file = csv;
 
 var content = fs.readFileSync(file, "utf-8")
 var rows;
@@ -22,3 +27,9 @@ papaparse.parse(content, {
 });
 
 console.log(names)
+
+return names;
+
+}
+
+csvRead("csvTest.csv")
