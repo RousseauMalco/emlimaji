@@ -26,7 +26,7 @@ papaparse.parse(content, {
     }
 });
 
-console.log(names)
+// console.log(names)
 
 return names;
 
