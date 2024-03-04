@@ -1,7 +1,13 @@
-function MakeTeamsButton() {
+import { csvRead } from "./csvRead";
+
+export function MakeTeamsButton() {
+    function handleClick() {
+      alert('You clicked me!');
+    }
+  
     return (
-      <button>
-        Randomize
+      <button onClick={handleClick}>
+        csvRead("csvTest.csv")
       </button>
     );
   }

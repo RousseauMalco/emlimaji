@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { MakeTeamsButton } from './Components/MakeTeamsButton';
 
 function App() {
   return (
@@ -7,6 +8,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+          <p>
+            <MakeTeamsButton />
+          </p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -16,7 +20,6 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-          {/* <MakeTeamsButton /> */}
         </a>
       </header>
     </div>
