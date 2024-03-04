@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 import papaparse from 'papaparse';
 export function csvRead(csv) {
