@@ -2,7 +2,7 @@ import { csvRead } from "./csvRead";
 
 export function MakeTeamsButton() {
     function handleClick() {
-      alert('You clicked me!');
+      alert('Generating teams...');
     }
     
     function handleFileChange(e) {
@@ -11,6 +11,7 @@ export function MakeTeamsButton() {
       reader.readAsText( e.target.files[0], 'UTF-8');
       reader.onload = (evt) => {
         console.log('success!!', evt.target.result); // this is where a call to csvRead will go 
+        // csvRead(evt.target.readAsArrayBuffer);
       }
       reader.onerror = (evt) => {
         console.log('sad news', evt);
