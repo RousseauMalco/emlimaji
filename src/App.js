@@ -6,12 +6,24 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <div>
           <p>
-            <MakeTeamsButton />
+            Welcome to GroupMate!
           </p>
-          Edit <code>src/App.js</code> and save to reload.
+          <p>
+            Upload a CSV to get started:
+          </p>
+        </div>
+        <div>
+            < MakeTeamsButton />
+        </div>
+        <div>
+          <p>
+            this is where the teams output might go 
+          </p>
+        </div>
+          {/* Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -21,6 +33,7 @@ function App() {
         >
           Learn React
         </a>
+        </p> */}
       </header>
     </div>
   );

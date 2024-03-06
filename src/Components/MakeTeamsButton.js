@@ -19,10 +19,16 @@ export function MakeTeamsButton() {
 
     return (
      <div>
+      <h1>
         <input type="file" onChange={handleFileChange} />
+      </h1>
+      <p>
         <button onClick={handleClick}>
-          {/* csvRead("csvTest.csv") */}
-        </button> 
+            Make new teams!
+            {/* csvRead("csvTest.csv") */}
+          </button> 
+      </p> 
       </div>
+       
     ); 
   }
