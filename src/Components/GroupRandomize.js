@@ -1,4 +1,4 @@
-import {csvRead} from './csvRead.js';
+// import {csvRead} from './csvRead.js';
 
 // document.getElementById("myButton").addEventListener("click", () => {
 // document.getElementById('fileInput').addEventListener('change', handleFileSelect);
@@ -16,7 +16,7 @@ import {csvRead} from './csvRead.js';
 //     reader.readAsText(file);
 // }
 
-export function groupRandomizer(csv) {
+export function groupRandomizer(names) {
 
 // const names = ["Josie Melendez",
 //     "Leo Mccullough",
@@ -39,7 +39,7 @@ export function groupRandomizer(csv) {
 //     "Emma",
 //     "Malcolm"];
 
-const names = csvRead(csv);
+// const names = csvRead(csv);
 
 // const names = ["Henry", "Joe", "Jen", "carl", "Jason M. Oli"];
 
@@ -101,12 +101,9 @@ console.log(group4.join());
 // const outputText = group1.join() + "/n" + group2.join() + "/n" + group3.join() + "/n" + group4.join();
 // const outputElement = document.getElementById("output");
 // outputElement.innerHTML = outputText;
-
+    return groupGroup;
 }
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
-
-groupRandomizer("csvTest.csv");
-

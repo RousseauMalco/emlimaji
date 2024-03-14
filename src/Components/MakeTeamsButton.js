@@ -1,6 +1,8 @@
 import { csvRead } from "./csvRead";
+import { groupRandomizer } from "./GroupRandomize";
 
 export function MakeTeamsButton() {
+    var names = [];
     function handleClick() {
       alert('Generating teams...');
     }
@@ -11,11 +13,15 @@ export function MakeTeamsButton() {
       reader.readAsText( e.target.files[0], 'UTF-8');
       reader.onload = (evt) => {
         console.log('success!!', evt.target.result); // this is where a call to csvRead will go 
-        // csvRead(evt.target.readAsArrayBuffer);
+        names = csvRead(evt.target.result);
       }
       reader.onerror = (evt) => {
         console.log('sad news', evt);
       }
+    }
+
+    function handleClick() {
+      groupRandomizer(names);
     }
 
     return (
@@ -26,7 +32,6 @@ export function MakeTeamsButton() {
       <p>
         <button onClick={handleClick}>
             Make new teams!
-            {/* csvRead("csvTest.csv") */}
           </button> 
       </p> 
       </div>

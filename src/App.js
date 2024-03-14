@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { MakeTeamsButton } from './Components/MakeTeamsButton';
+import { FileUpload} from './Components/FileUpload';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           </p>
         </div>
         <div>
+            {/* < FileUpload /> */}
             < MakeTeamsButton />
         </div>
         <div>
