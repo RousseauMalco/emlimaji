@@ -1,8 +1,11 @@
 import { csvRead } from "./csvRead";
 import { groupRandomizer } from "./GroupRandomize";
+import { GroupContainer } from "./GroupContainer";
+// import React from 'react';
 
 export function MakeTeamsButton() {
     var names = [];
+    var team = "test";
     function handleClick() {
       alert('Generating teams...');
     }
@@ -12,16 +15,21 @@ export function MakeTeamsButton() {
       var reader = new FileReader();
       reader.readAsText( e.target.files[0], 'UTF-8');
       reader.onload = (evt) => {
-        console.log('success!!', evt.target.result); // this is where a call to csvRead will go 
+        console.log('File read successful.', evt.target.result); // this is where a call to csvRead will go 
         names = csvRead(evt.target.result);
       }
       reader.onerror = (evt) => {
-        console.log('sad news', evt);
+        console.log('File read failed.', evt);
       }
     }
 
     function handleClick() {
-      groupRandomizer(names);
+      var groups = groupRandomizer(names);
+      // team = "test";
+      const arrayDataItems = groups.map((group) => <li>{group}</li>);
+      for (var i = 0; i < groups.length; i++) {
+        GroupContainer(groups[i]);
+      }
     }
 
     return (
@@ -32,8 +40,12 @@ export function MakeTeamsButton() {
       <p>
         <button onClick={handleClick}>
             Make new teams!
+            {/* {team} */}
           </button> 
       </p> 
+      <p>
+        {/* {team} */}
+      </p>
       </div>
        
     ); 

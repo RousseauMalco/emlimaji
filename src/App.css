@@ -32,6 +32,28 @@ button {
   cursor: pointer;
   padding: 20px;
   }
+
+.container {
+    margin-left: 20px;
+  }
+  
+.container h1 {
+    color: green
+  }
+  
+.container li {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    background-color: #35F543;
+    width: 400px;
+    color: white;
+    padding: 2px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 /* .App-link {
   color: #61dafb;
 }
