@@ -10,9 +10,9 @@ function App() {
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div>
-          <p>
+          <h1>
             Welcome to GroupMate!
-          </p>
+          </h1>
           <p>
             Upload a CSV to get started:
           </p>

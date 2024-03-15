@@ -11,15 +11,17 @@ export function MakeTeamsButton() {
     }
     
     function handleFileChange(e) {
-      console.log('file changed!', e)
-      var reader = new FileReader();
-      reader.readAsText( e.target.files[0], 'UTF-8');
-      reader.onload = (evt) => {
-        console.log('File read successful.', evt.target.result); // this is where a call to csvRead will go 
-        names = csvRead(evt.target.result);
-      }
-      reader.onerror = (evt) => {
-        console.log('File read failed.', evt);
+      if(e && e.type == "text/csv"){
+        console.log('file changed!', e)
+        var reader = new FileReader();
+        reader.readAsText( e.target.files[0], 'UTF-8');
+        reader.onload = (evt) => {
+          console.log('File read successful.', evt.target.result); // this is where a call to csvRead will go 
+          names = csvRead(evt.target.result);
+        }
+        reader.onerror = (evt) => {
+          console.log('File read failed.', evt);
+        }
       }
     }
 
@@ -35,7 +37,10 @@ export function MakeTeamsButton() {
     return (
      <div>
       <h1>
-        <input type="file" onChange={handleFileChange} />
+        <input 
+        type="file" 
+        accept=".csv"
+        onChange={handleFileChange} />
       </h1>
       <p>
         <button onClick={handleClick}>
