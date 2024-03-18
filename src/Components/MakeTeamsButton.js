@@ -11,18 +11,18 @@ export function MakeTeamsButton() {
     }
     
     function handleFileChange(e) {
-      if(e && e.type == "text/csv"){
+      // if(e.type == "csv"){
         console.log('file changed!', e)
         var reader = new FileReader();
         reader.readAsText( e.target.files[0], 'UTF-8');
         reader.onload = (evt) => {
-          console.log('File read successful.', evt.target.result); // this is where a call to csvRead will go 
+          console.log('File read successful.', evt.target.result);
           names = csvRead(evt.target.result);
         }
         reader.onerror = (evt) => {
           console.log('File read failed.', evt);
         }
-      }
+      // }
     }
 
     function handleClick() {
