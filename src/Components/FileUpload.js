@@ -20,7 +20,11 @@ export function FileUpload() {
         return (
             <div>
                 <h1>
-                    <input type="file" onChange={handleFileChange} />
+                    <input 
+                    type="file" 
+                    accept=".csv"
+                    onChange={handleFileChange} 
+                    />
                 </h1>
             </div>
         );
