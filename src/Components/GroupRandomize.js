@@ -43,23 +43,15 @@ export function groupRandomizer(names) {
 
 // const names = ["Henry", "Joe", "Jen", "carl", "Jason M. Oli"];
 
-const group1 = [];
-const group2 = [];
-const group3 = [];
-const group4 = [];
-
-// const groupGroup = [group1, group2, group3, group4];
 const groupGroup = [];
 
 // the teacher chooses the # of groups
-let tot_groups = 4;
+let tot_groups = 8;
 let desired_size = Math.floor(names.length/tot_groups);
-const indexArray = []
 
 for (let i = 0; i < tot_groups; i++) {
     const groupi = [];
     groupGroup[i] = groupi;
-    indexArray[i] = i;
 }
 
 let max_size = desired_size + 1
@@ -74,17 +66,7 @@ for (let i = 0; i < names.length; i++) {
             placed = true;
         }
     }
-    // if (position == 0 && groupGroup[0].length < desired_size) {
-    //     group1.push(names[i]);
-    // } else if (position == 1 && groupGroup[1].length < desired_size) {
-    //     group2.push(names[i]);
-    // } else if (position == 2 && groupGroup[2].length < desired_size) {
-    //     group3.push(names[i]);
-    // } else if (position == 3 && groupGroup[3].length < desired_size) {
-    //     group4.push(names[i]);
-    // } else {
     if (!placed) {
-        // let placed = false;
         for (let k = 0; k < groupGroup.length; k++) {
             if (groupGroup[k].length < desired_size) {
                 groupGroup[k].push(names[i]);
@@ -103,11 +85,6 @@ for (let i = 0; i < names.length; i++) {
         }
     }
 }
-
-// console.log(group1.join());
-// console.log(group2.join());
-// console.log(group3.join());
-// console.log(group4.join());
 
 for (let i = 0; i < groupGroup.length; i++) {
     console.log(groupGroup[i].join());
