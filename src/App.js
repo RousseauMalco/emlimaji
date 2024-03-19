@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import React from 'react';
 import './App.css';
-import { MakeTeamsButton } from './components/MakeTeamsButton';
-import { FileUpload} from './components/FileUpload';
+import { MakeTeamsButton } from './Components/MakeTeamsButton';
+import { FileUpload} from './Components/FileUpload';
 
 function App() {
   return (

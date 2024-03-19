@@ -10,7 +10,15 @@ export function csvRead(csv) {
     // var content = fs.readFileSync(file, "utf-8");
     // var content = readFileSync(csv, "utf-8");
     var rows;
+    var numResponse = 0;
     var names = [];
+    var preferences = [];
+
+    var results = [
+        [],
+        []
+    ];
+
 
     papaparse.parse(file, {
         download:false,
@@ -22,11 +30,20 @@ export function csvRead(csv) {
 
             for(var i=0; i < rows.length; i++){
                 names[i] = rows[i][1];
+                preferences[i] = rows[i][2];
+
+                // results[i][1] = names[i];
+
+
+                numResponse++;
             }
         }
     });
 
-    console.log(names)
+    console.log("Name: " + names);
+    console.log("Preference: " + preferences);
+    console.log("results: " + results[1]);
+    console.log("Number of responses: " + numResponse);
 
     return names;
 
