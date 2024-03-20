@@ -14,11 +14,6 @@ export function csvRead(csv) {
     var names = [];
     var preferences = [];
 
-    var results = [
-        [],
-        []
-    ];
-
 
     papaparse.parse(file, {
         download:false,
@@ -29,12 +24,13 @@ export function csvRead(csv) {
             rows.shift(); // shift removes the first element and returns that value
 
             for(var i=0; i < rows.length; i++){
-                names[i] = rows[i][1];
-                preferences[i] = rows[i][2];
+                rows[i].shift();
+                names[i] = rows[i][0];
+                preferences[i] = rows[i][1];
+
+                console.log(rows);
 
                 // results[i][1] = names[i];
-
-
                 numResponse++;
             }
         }
@@ -42,10 +38,10 @@ export function csvRead(csv) {
 
     console.log("Name: " + names);
     console.log("Preference: " + preferences);
-    console.log("results: " + results[1]);
     console.log("Number of responses: " + numResponse);
+    console.log(rows);
 
-    return names;
+    return rows;
 
 }
 
