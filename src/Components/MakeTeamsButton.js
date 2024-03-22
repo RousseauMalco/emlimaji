@@ -1,14 +1,18 @@
 import { csvRead } from "./csvRead";
 import { groupRandomizer } from "./GroupRandomize";
-import { GroupContainer } from "./GroupContainer";
+// import { GroupContainer } from "./GroupContainer";
+import React, { useState } from 'react';
+
 // import React from 'react';
 
 export function MakeTeamsButton() {
-    var names = [];
-    var team = "test";
-    function handleClick() {
-      alert('Generating teams...');
-    }
+    const [groups, setGroups] = useState([]);
+    const [names, setNames] = useState([]);
+    const [memberList, setMemberList] = useState([])
+    // var team = "test";
+    // function handleClick() {
+    //   alert('Generating teams...');
+    // }
     
     function handleFileChange(e) {
       console.log(e);
@@ -17,7 +21,8 @@ export function MakeTeamsButton() {
       reader.readAsText( e.target.files[0], 'UTF-8');
       reader.onload = (evt) => {
         console.log('File read successful.', evt.target.result);
-        names = csvRead(evt.target.result);
+        var thisNames = csvRead(evt.target.result);
+        setNames(thisNames);
       }
       reader.onerror = (evt) => {
         console.log('File read failed.', evt);
@@ -25,12 +30,17 @@ export function MakeTeamsButton() {
     }
 
     function handleClick() {
-      var groups = groupRandomizer(names);
-      // team = "test";
-      const arrayDataItems = groups.map((group) => <li>{group}</li>);
-      for (var i = 0; i < groups.length; i++) {
-        GroupContainer(groups[i]);
-      }
+      var teams = groupRandomizer(names)
+      setGroups(teams)
+      var members = groups.map((member) => <li>{member}</li>)
+      setMemberList(members);
+      return (
+        <div className="container">
+          <div>
+          </div>
+          <ul>{memberList}</ul>
+        </div>
+      );
     }
 
     return (
@@ -44,13 +54,10 @@ export function MakeTeamsButton() {
       <p>
         <button onClick={handleClick}>
             Make new teams!
-            {/* {team} */}
           </button> 
+        
       </p> 
-      <p>
-        {/* {team} */}
-      </p>
+      {memberList}
       </div>
-       
     ); 
   }

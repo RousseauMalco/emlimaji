@@ -5,7 +5,7 @@ import React from "react";
 export function GroupContainer(group) {
 
   /* Mapping the courses into a new array of JSX nodes as arrayDataItems */
-  const arrayDataItems = group.map((group) => <li>{group}</li>);
+  const memberList = group.map((member) => <li>{member}</li>);
 
   return (
     <div className="container">
@@ -13,7 +13,7 @@ export function GroupContainer(group) {
         <h1>Array of Names</h1>
       </div>
 
-      <ul>{arrayDataItems}</ul>
+      <ul>{memberList}</ul>
     </div>
   );
 }
