@@ -1,48 +1,49 @@
-// import {csvRead} from './csvRead.js';
+// WIP: Testing for making groups with responders' desire to work with someone
+export function pairPreferences(names){
 
-// document.getElementById("myButton").addEventListener("click", () => {
-// document.getElementById('fileInput').addEventListener('change', handleFileSelect);
-// })
+    // names[i][1] = access the responders' chosen person they want to work with
+    // 1) pair up teams first then remove them from the list of names
+    // 2) remaining names that are not paired up are then randomized
+    // 3) 
 
-// function handleFileSelect(event) {
-//     const file = event.target.files[0];
-//     const reader = new FileReader();
+    // run a for each loop that contains the responder's name and another for each for their preference
+    // for each name : names:
+    //      for each name2 : names:
+    //          if (name2.preference == name && name.preference == name2)
 
-//     reader.onload = function(event) {
-//         const csv = event.target.result;
-//         groupRandomizer('"' + csv + '"');
-//     };
+    // put the group creator here
+    const preferredGroups = [];
 
-//     reader.readAsText(file);
-// }
+    // the teacher chooses the # of groups
+    let tot_groups = 4;
+    let desired_size = Math.floor(names.length/tot_groups);
+
+    for (let i = 0; i < tot_groups; i++) {
+        const groupi = [];
+        preferredGroups[i] = groupi;
+    }
+
+    // loops for responders' name
+    for(let i = 0; i < names.length; i++){
+        const namePrefer = names[i];
+
+        //loops for responders' chosen person they want to work with
+        for(let j = 0; j < namePrefer.length; j++){ // WIP
+            if(j == 0 && preferredGroups[j].length < desired_size && preferredGroups[i].includes[j] != namePrefer[j]){
+                const responders = namePrefer[j]; // list for the names of responder
+                preferredGroups[i].push(namePrefer[j]);
+            }
+            if(j == 1 && preferredGroups[j].length < desired_size && preferredGroups[i].includes[j] != namePrefer[j]){
+                const preference = namePrefer[j]; // list for the names of the responders' desired person to work with
+                preferredGroups[i].push(namePrefer[j]);
+            }
+        }
+
+    }
+    return preferredGroups;
+}
 
 export function groupRandomizer(names) {
-
-    // const names = ["Josie Melendez",
-    //     "Leo Mccullough",
-    //     "Tamara Hutchinson",
-    //     "Wayne Houston",
-    //     "Jakob Morrow",
-    //     "Filip Sanchez",
-    //     "Chanel O'Connor",
-    //     "Hayden Sears",
-    //     "Megan Farrell",
-    //     "Lily-Rose Baxter",
-    //     "Gerard Nichols",
-    //     "Mason Doyle",
-    //     "Caroline Simmons",
-    //     "Valerie Mckay",
-    //     "Eric Murphy",
-    //     "Harley Bowman",
-    //     "Linh",
-    //     "Jim",
-    //     "Emma",
-    //     "Malcolm"];
-
-    // const names = csvRead(csv);
-
-    // const names = ["Henry", "Joe", "Jen", "carl", "Jason M. Oli"];
-
     const groupGroup = [];
 
     // the teacher chooses the # of groups
