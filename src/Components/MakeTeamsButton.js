@@ -32,7 +32,7 @@ export function MakeTeamsButton() {
     function handleClick() {
       var teams = groupRandomizer(names)
       setGroups(teams)
-      var members = groups.map((member) => <li>{member}</li>)
+      var members = teams.map((member) => <li>{member}</li>)
       setMemberList(members);
       return (
         <div className="container">
