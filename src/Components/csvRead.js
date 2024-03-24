@@ -1,19 +1,10 @@
-// import fs from 'fs';
-// import papaparse from 'papaparse';
-
 export function csvRead(csv) {
-    // var fs = require("fs");
     let papaparse = require('papaparse');
-    
     let file = csv;
 
-    // var content = fs.readFileSync(file, "utf-8");
-    // var content = readFileSync(csv, "utf-8");
     var rows;
     var numResponse = 0;
-    var names = [];
-    var preferences = [];
-
+    let people = [];
 
     papaparse.parse(file, {
         download:false,
@@ -25,24 +16,18 @@ export function csvRead(csv) {
 
             for(var i=0; i < rows.length; i++){
                 rows[i].shift();
-                names[i] = rows[i][0];
-                preferences[i] = rows[i][1];
 
-                console.log(rows);
+                const person = {};
+                person["name"] = rows[i][0];
+                person["dislike"] = rows[i][1];
+                people[i] = person;
 
-                // results[i][1] = names[i];
+                console.log(people);
+
                 numResponse++;
             }
         }
     });
 
-    console.log("Name: " + names);
-    console.log("Preference: " + preferences);
-    console.log("Number of responses: " + numResponse);
-    console.log(rows);
-
-    return rows;
-
+    return people;
 }
-
-// csvRead("csvTest.csv")

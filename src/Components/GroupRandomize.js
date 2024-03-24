@@ -44,6 +44,7 @@ export function pairPreferences(names){
 }
 
 export function groupRandomizer(names) {
+
     const groupGroup = [];
 
     // the teacher chooses the # of groups
@@ -62,15 +63,15 @@ export function groupRandomizer(names) {
         let placed = false;
 
         for (let j = 0; j < groupGroup.length; j ++) {
-            if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name == names[i][1]) == null) {
-                groupGroup[j].push(names[i][0]);
+            if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name == names[i]["dislike"]) == null) {
+                groupGroup[j].push(names[i]["name"]);
                 placed = true;
             }
         }
         if (!placed) {
             for (let k = 0; k < groupGroup.length; k++) {
-                if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name == names[i][1]) == null) {
-                    groupGroup[k].push(names[i][0]);
+                if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name == names[i]["dislike"]) == null) {
+                    groupGroup[k].push(names[i]["name"]);
                     placed = true;
                     break;
                 }
@@ -78,8 +79,8 @@ export function groupRandomizer(names) {
 
             if (!placed) {
                 for (let j = 0; j < groupGroup.length; j++) {
-                    if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name == names[i][1]) == null) {
-                        groupGroup[j].push(names[i][0]);
+                    if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name == names[i]["dislike"]) == null) {
+                        groupGroup[j].push(names[i]["name"]);
                         break;
                     }
                 }
@@ -91,14 +92,6 @@ export function groupRandomizer(names) {
         console.log(groupGroup[i].join());
     }
 
-// document.write(group1);
-// document.write(group2);
-// document.write(group3);
-// document.write(group4);
-
-// const outputText = group1.join() + "/n" + group2.join() + "/n" + group3.join() + "/n" + group4.join();
-// const outputElement = document.getElementById("output");
-// outputElement.innerHTML = outputText;
     return groupGroup;
 }
 

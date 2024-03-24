@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import { MakeTeamsButton } from './Components/MakeTeamsButton';
 import { FileUpload} from './Components/FileUpload';
+import { FileUploadAndRead } from './Components/FileUploadAndRead';
 
 function App() {
   return (
@@ -18,13 +19,7 @@ function App() {
           </p>
         </div>
         <div>
-            {/* < FileUpload /> */}
-            < MakeTeamsButton />
-        </div>
-        <div>
-          <p>
-            this is where the teams output might go 
-          </p>
+            < FileUploadAndRead />
         </div>
           {/* Edit <code>src/App.js</code> and save to reload.
         </p>
