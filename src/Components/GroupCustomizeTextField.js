@@ -4,7 +4,7 @@ import React from "react";
 
 import { useState } from 'react';
 
-export default function Form() {
+export function GroupCustomizeTextField() {
   const [answer, setAnswer] = useState('');
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('typing');
@@ -64,4 +64,18 @@ export default function Form() {
   );
 }
 
+function submitForm(answer) {
+    // Pretend it's hitting the network.
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let shouldError = answer !== isNaN
+        if (shouldError) {
+          reject(new Error('Number of groups needs to be a numver'));
+        } else {
+          resolve();
+        }
+      }, 1500);
+    });
+
 }
+
