@@ -14,8 +14,8 @@ function App() {
         <Header />
       </div>
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div>
+          <img src="Components/jimLogo.png"/>
           <h1>
             <HeaderText />
           </h1>
