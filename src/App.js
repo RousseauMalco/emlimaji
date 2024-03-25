@@ -4,10 +4,14 @@ import './App.css';
 import { MakeTeamsButton } from './Components/MakeTeamsButton';
 import { FileUpload} from './Components/FileUpload';
 import { FileUploadAndRead } from './Components/FileUploadAndRead';
+import { Header } from './Components/Header';
 
 function App() {
   return (
     <div className="App">
+      <div>
+        <Header />
+      </div>
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div>
@@ -21,20 +25,11 @@ function App() {
         <div>
             < FileUploadAndRead />
         </div>
-          {/* Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        </p> */}
       </header>
     </div>
   );
 }
+
+
 
 export default App;
