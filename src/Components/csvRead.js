@@ -20,6 +20,7 @@ export function csvRead(csv) {
                 const person = {};
                 person["name"] = rows[i][0];
                 person["dislike"] = rows[i][1];
+                person["like"] = rows[i][2];
                 people[i] = person;
 
                 console.log(people);

@@ -25,7 +25,7 @@ export function pairPreferences(names){
 
     // loops for responders' name
     for(let i = 0; i < names.length; i++){
-        const namePrefer = names[i];
+        const namePrefer = names[i]["like"];
 
         //loops for responders' chosen person they want to work with
         for(let j = 0; j < namePrefer.length; j++){ // WIP
