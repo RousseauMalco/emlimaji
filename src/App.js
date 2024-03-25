@@ -5,6 +5,7 @@ import { MakeTeamsButton } from './Components/MakeTeamsButton';
 import { FileUpload} from './Components/FileUpload';
 import { FileUploadAndRead } from './Components/FileUploadAndRead';
 import { Header } from './Components/Header';
+import { HeaderText } from './Components/HeaderText';
 
 function App() {
   return (
@@ -16,11 +17,8 @@ function App() {
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div>
           <h1>
-            Welcome to GroupMate!
+            <HeaderText />
           </h1>
-          <p>
-            Upload a CSV to get started:
-          </p>
         </div>
         <div>
             < FileUploadAndRead />
