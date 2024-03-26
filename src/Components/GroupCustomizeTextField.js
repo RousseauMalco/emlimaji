@@ -70,7 +70,7 @@ function submitForm(answer) {
       setTimeout(() => {
         let shouldError = answer !== isNaN
         if (shouldError) {
-          reject(new Error('Number of groups needs to be a numver'));
+          reject(new Error('Number of groups needs to be a number'));
         } else {
           resolve();
         }
