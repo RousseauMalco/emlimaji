@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import jimLogo from './Components/jimLogo.png';
 import React from 'react';
 import './App.css';
 import { MakeTeamsButton } from './Components/MakeTeamsButton';
@@ -15,15 +15,14 @@ function App() {
         <Header />
       </div>
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div>
+          <img src={jimLogo}/>
           <h1>
             <HeaderText />
           </h1>
         </div>
         <div>
-            < FileUploadAndRead />
-            < GroupCustomizeTextField />
+            <FileUploadAndRead />
         </div>
       </header>
     </div>
