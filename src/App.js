@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import jimLogo from './Components/jimLogo.png';
 import React from 'react';
 import './App.css';
 import { MakeTeamsButton } from './Components/MakeTeamsButton';
@@ -15,13 +15,13 @@ function App() {
       </div>
       <header className="App-header">
         <div>
-          <img src="Components/jimLogo.png"/>
+          <img src={jimLogo}/>
           <h1>
             <HeaderText />
           </h1>
         </div>
         <div>
-            < FileUploadAndRead />
+            <FileUploadAndRead />
         </div>
       </header>
     </div>
