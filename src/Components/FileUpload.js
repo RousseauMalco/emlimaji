@@ -17,7 +17,7 @@ export function FileUpload({onRead}) {
     
     return (
         <div>
-         <h1>
+         <h1 class="sm:rounded-lg" >
            <input 
            type="file" 
            accept=".csv"

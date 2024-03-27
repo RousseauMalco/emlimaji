@@ -23,6 +23,7 @@ function App() {
         </div>
         <div>
             <FileUploadAndRead />
+            <GroupCustomizeTextField />
         </div>
       </header>
     </div>
