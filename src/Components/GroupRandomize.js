@@ -1,5 +1,5 @@
 // WIP: Testing for making groups with responders' desire to work with someone
-export function pairPreferences(names){
+export function pairPreferences(people){
 
     // names[i][1] = access the responders' chosen person they want to work with
     // 1) pair up teams first then remove them from the list of names
@@ -12,35 +12,55 @@ export function pairPreferences(names){
     //          if (name2.preference == name && name.preference == name2)
 
     // put the group creator here
-    const preferredGroups = [];
+    const groups = [];
 
     // the teacher chooses the # of groups
     let tot_groups = 4;
-    let desired_size = Math.floor(names.length/tot_groups);
+    let desired_size = Math.floor(people.length/tot_groups);
 
     for (let i = 0; i < tot_groups; i++) {
         const groupi = [];
-        preferredGroups[i] = groupi;
+        groups[i] = groupi;
     }
+
+    people = people.array.sort();
+
+    console.log(people);
+
+    // people.array.forEach(element => {
+    //     const pref = element["like"];
+
+    //     pref.array.forEach(prefName => {
+    //         let person = people.find((name) => name == prefName && name["like"].includes(element));
+    //         if (person != null) {
+
+    //         }
+    //     });
+    // });
 
     // loops for responders' name
-    for(let i = 0; i < names.length; i++){
-        const namePrefer = names[i]["like"];
+    // for(let i = 0; i < people.length; i++){
+    //     const namePrefer = people[i]["like"];
+
+        
 
         //loops for responders' chosen person they want to work with
-        for(let j = 0; j < namePrefer.length; j++){ // WIP
-            if(j == 0 && preferredGroups[j].length < desired_size && preferredGroups[i].includes[j] != namePrefer[j]){
-                const responders = namePrefer[j]; // list for the names of responder
-                preferredGroups[i].push(namePrefer[j]);
-            }
-            if(j == 1 && preferredGroups[j].length < desired_size && preferredGroups[i].includes[j] != namePrefer[j]){
-                const preference = namePrefer[j]; // list for the names of the responders' desired person to work with
-                preferredGroups[i].push(namePrefer[j]);
-            }
-        }
+        // for(let j = 0; j < namePrefer.length; j++){ // WIP
+        //     people[].find((name) => name == people[i]["dislike"]) == null
 
-    }
-    return preferredGroups;
+
+            // if(j == 0 && groups[j].length < desired_size && groups[i].includes[j] != namePrefer[j]){
+            //     const responders = namePrefer[j]; // list for the names of responder
+            //     groups[i].push(namePrefer[j]);
+            // }
+            // if(j == 1 && groups[j].length < desired_size && groups[i].includes[j] != namePrefer[j]){
+            //     const preference = namePrefer[j]; // list for the names of the responders' desired person to work with
+            //     groups[i].push(namePrefer[j]);
+            // }
+        // }
+
+    // }
+    return groups;
 }
 
 export function groupRandomizer(names) {
@@ -97,4 +117,18 @@ export function groupRandomizer(names) {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
+}
+
+function binarySearch(names, target, low, high) {
+    if (low > high) {
+        return null;
+    }
+
+    let m = Math.ceil((low + high)/2);
+
+    if (names[m]["name"] == target) {
+        return m;
+    }
+
+    // if (names[m] > )
 }

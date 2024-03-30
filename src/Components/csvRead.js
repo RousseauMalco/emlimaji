@@ -5,6 +5,7 @@ export function csvRead(csv) {
     var rows;
     var numResponse = 0;
     let people = [];
+    let names = [];
 
     papaparse.parse(file, {
         download:false,
@@ -17,14 +18,18 @@ export function csvRead(csv) {
             for(var i=0; i < rows.length; i++){
                 rows[i].shift();
 
-                const person = {};
-                person["name"] = rows[i][0];
-                person["dislike"] = rows[i][1];
-                person["like"] = rows[i][2];
-                people[i] = person;
+                // const person = {};
+                // person["name"] = rows[i][0];
+                // person["dislike"] = rows[i][1];
+                // person["like"] = rows[i][2];
+                // people[i] = person;
+
+                names[i] = rows[i][0];
+                people[rows[i][0]]["dislike"] = rows[i][1];
+                people[rows[i][0]]["like"] = rows[i][2];
+
 
                 console.log(people);
-
                 numResponse++;
             }
         }
