@@ -1,4 +1,4 @@
-import { groupRandomizer } from "./GroupRandomize";
+import { pairPreferences } from "./GroupRandomize";
 import React, { useState } from 'react';
 
 function renderMembers(props) {
@@ -30,9 +30,10 @@ export function MakeTeamsButton({inputNames}) {
     const [groups, setGroups] = useState([]);
 
     function handleClick() {
-      if (inputNames.length > 0) {
-        var teams = groupRandomizer(inputNames)
-        setGroups(teams)
+      console.log(inputNames);
+      if (inputNames.size > 0) {
+        var teams = pairPreferences(inputNames);
+        setGroups(teams);
       }
     }
 

@@ -1,3 +1,8 @@
+let tot_groups = 0;
+let desired_size = 0;
+let max_size = 0;
+
+
 // WIP: Testing for making groups with responders' desire to work with someone
 export function pairPreferences(people){
 
@@ -15,28 +20,47 @@ export function pairPreferences(people){
     const groups = [];
 
     // the teacher chooses the # of groups
-    let tot_groups = 4;
-    let desired_size = Math.floor(people.length/tot_groups);
+    tot_groups = 4;
+    desired_size = Math.floor(people.size/tot_groups);
+    max_size = desired_size + 1
 
     for (let i = 0; i < tot_groups; i++) {
         const groupi = [];
         groups[i] = groupi;
     }
 
-    people = people.array.sort();
+    people.forEach(element => {
+        if (contains(groups, element.name)) {
 
-    console.log(people);
-
-    // people.array.forEach(element => {
-    //     const pref = element["like"];
-
-    //     pref.array.forEach(prefName => {
-    //         let person = people.find((name) => name == prefName && name["like"].includes(element));
-    //         if (person != null) {
-
-    //         }
-    //     });
-    // });
+        } else {
+            if (element.like != "") {
+                const pref = element.like.split(',');
+                const grouped = [element.name];
+                pref.forEach(prefName => {
+                    let person = people.get(prefName);
+                    if (person != null && person.like.includes(element.name) && grouped.length < max_size) {
+                        grouped.push(prefName);
+                        console.log(grouped);
+                    }
+                });
+        
+                let placed = false;
+                let counter = 0;
+                // console.log(grouped);
+                while (!placed) {
+                    let position = getRandomInt(tot_groups);
+                    if (groups[position].length < max_size && groups[position].length + grouped < max_size) {
+                        grouped.forEach(element => groups[position].push(element));
+                        placed = true;
+                    }
+                    counter++;
+                    if (counter > 4) {
+                        break;
+                    }
+                }
+            }
+        }
+    });
 
     // loops for responders' name
     // for(let i = 0; i < people.length; i++){
@@ -60,38 +84,32 @@ export function pairPreferences(people){
         // }
 
     // }
-    return groups;
+    return groupRandomizer(people, groups);
 }
 
-export function groupRandomizer(names) {
+function groupRandomizer(people, groups) {
 
-    const groupGroup = [];
+    const groupGroup = groups;
+    
+    // let tot_groups = 4;  // the teacher chooses the # of groups
+    // let desired_size = Math.floor(people.size/tot_groups);
+    // let max_size = desired_size + 1
 
-    // the teacher chooses the # of groups
-    let tot_groups = 4;
-    let desired_size = Math.floor(names.length/tot_groups);
-
-    for (let i = 0; i < tot_groups; i++) {
-        const groupi = [];
-        groupGroup[i] = groupi;
-    }
-
-    let max_size = desired_size + 1
-
-    for (let i = 0; i < names.length; i++) {
+    people.forEach(element => {
+    
         let position = getRandomInt(tot_groups);
         let placed = false;
 
         for (let j = 0; j < groupGroup.length; j ++) {
-            if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name == names[i]["dislike"]) == null) {
-                groupGroup[j].push(names[i]["name"]);
+            if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name == element.dislike) == null) {
+                groupGroup[j].push(element.name);
                 placed = true;
             }
         }
         if (!placed) {
             for (let k = 0; k < groupGroup.length; k++) {
-                if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name == names[i]["dislike"]) == null) {
-                    groupGroup[k].push(names[i]["name"]);
+                if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name == element.dislike) == null) {
+                    groupGroup[k].push(element.name);
                     placed = true;
                     break;
                 }
@@ -99,14 +117,14 @@ export function groupRandomizer(names) {
 
             if (!placed) {
                 for (let j = 0; j < groupGroup.length; j++) {
-                    if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name == names[i]["dislike"]) == null) {
-                        groupGroup[j].push(names[i]["name"]);
+                    if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name == element.dislike) == null) {
+                        groupGroup[j].push(element.name);
                         break;
                     }
                 }
             }
         }
-    }
+    });
 
     for (let i = 0; i < groupGroup.length; i++) {
         console.log(groupGroup[i].join());
@@ -119,16 +137,16 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
 
-function binarySearch(names, target, low, high) {
-    if (low > high) {
-        return null;
+function contains(groups, target) {
+    let included = false;
+    let i = 0;
+    while (i < groups.length) {
+        if (groups[i].includes(target)) {
+            included = true;
+            break;
+        }
+        i++;
     }
 
-    let m = Math.ceil((low + high)/2);
-
-    if (names[m]["name"] == target) {
-        return m;
-    }
-
-    // if (names[m] > )
+    return included;
 }

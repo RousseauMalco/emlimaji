@@ -4,8 +4,8 @@ export function csvRead(csv) {
 
     var rows;
     var numResponse = 0;
-    let people = [];
-    let names = [];
+    const people = new Map();
+    // let names = [];
 
     papaparse.parse(file, {
         download:false,
@@ -24,10 +24,7 @@ export function csvRead(csv) {
                 // person["like"] = rows[i][2];
                 // people[i] = person;
 
-                names[i] = rows[i][0];
-                people[rows[i][0]]["dislike"] = rows[i][1];
-                people[rows[i][0]]["like"] = rows[i][2];
-
+                people.set(rows[i][0], new Object({name: rows[i][0], dislike: rows[i][1], like: rows[i][2]}));
 
                 console.log(people);
                 numResponse++;
