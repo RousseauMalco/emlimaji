@@ -30,31 +30,27 @@ export function pairPreferences(people){
     }
 
     people.forEach(element => {
-        if (contains(groups, element.name)) {
-
-        } else {
-            if (element.like != "") {
+        if (!contains(groups, element.name)) {
+            if (element.like != "" && element.like != null) {
                 const pref = element.like.split(',');
                 const grouped = [element.name];
                 pref.forEach(prefName => {
                     let person = people.get(prefName);
                     if (person != null && person.like.includes(element.name) && grouped.length < max_size) {
                         grouped.push(prefName);
-                        console.log(grouped);
                     }
                 });
         
                 let placed = false;
                 let counter = 0;
-                // console.log(grouped);
                 while (!placed) {
                     let position = getRandomInt(tot_groups);
-                    if (groups[position].length < max_size && groups[position].length + grouped < max_size) {
+                    if (groups[position].length < max_size && groups[position].length + grouped.length < max_size) {
                         grouped.forEach(element => groups[position].push(element));
                         placed = true;
                     }
                     counter++;
-                    if (counter > 4) {
+                    if (counter > tot_groups) {
                         break;
                     }
                 }
@@ -62,28 +58,6 @@ export function pairPreferences(people){
         }
     });
 
-    // loops for responders' name
-    // for(let i = 0; i < people.length; i++){
-    //     const namePrefer = people[i]["like"];
-
-        
-
-        //loops for responders' chosen person they want to work with
-        // for(let j = 0; j < namePrefer.length; j++){ // WIP
-        //     people[].find((name) => name == people[i]["dislike"]) == null
-
-
-            // if(j == 0 && groups[j].length < desired_size && groups[i].includes[j] != namePrefer[j]){
-            //     const responders = namePrefer[j]; // list for the names of responder
-            //     groups[i].push(namePrefer[j]);
-            // }
-            // if(j == 1 && groups[j].length < desired_size && groups[i].includes[j] != namePrefer[j]){
-            //     const preference = namePrefer[j]; // list for the names of the responders' desired person to work with
-            //     groups[i].push(namePrefer[j]);
-            // }
-        // }
-
-    // }
     return groupRandomizer(people, groups);
 }
 
@@ -96,35 +70,37 @@ function groupRandomizer(people, groups) {
     // let max_size = desired_size + 1
 
     people.forEach(element => {
+        if (!contains(groups, element.name)) {
+            let position = getRandomInt(tot_groups);
+            let placed = false;
     
-        let position = getRandomInt(tot_groups);
-        let placed = false;
-
-        for (let j = 0; j < groupGroup.length; j ++) {
-            if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name == element.dislike) == null) {
-                groupGroup[j].push(element.name);
-                placed = true;
-            }
-        }
-        if (!placed) {
-            for (let k = 0; k < groupGroup.length; k++) {
-                if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name == element.dislike) == null) {
-                    groupGroup[k].push(element.name);
+            for (let j = 0; j < groupGroup.length; j ++) {
+                if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name == element.dislike) == null) {
+                    groupGroup[j].push(element.name);
                     placed = true;
-                    break;
                 }
             }
-
             if (!placed) {
-                for (let j = 0; j < groupGroup.length; j++) {
-                    if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name == element.dislike) == null) {
-                        groupGroup[j].push(element.name);
+                for (let k = 0; k < groupGroup.length; k++) {
+                    if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name == element.dislike) == null) {
+                        groupGroup[k].push(element.name);
+                        placed = true;
                         break;
+                    }
+                }
+    
+                if (!placed) {
+                    for (let j = 0; j < groupGroup.length; j++) {
+                        if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name == element.dislike) == null) {
+                            groupGroup[j].push(element.name);
+                            break;
+                        }
                     }
                 }
             }
         }
     });
+    
 
     for (let i = 0; i < groupGroup.length; i++) {
         console.log(groupGroup[i].join());
@@ -140,13 +116,12 @@ function getRandomInt(max) {
 function contains(groups, target) {
     let included = false;
     let i = 0;
-    while (i < groups.length) {
+    while (i < groups.length && !included) {
         if (groups[i].includes(target)) {
             included = true;
             break;
         }
         i++;
     }
-
     return included;
 }
