@@ -1,12 +1,11 @@
 import jimLogo from './Components/jimLogo.png';
 import React from 'react';
 import './App.css';
-import { MakeTeamsButton } from './Components/MakeTeamsButton';
-import { FileUpload} from './Components/FileUpload';
 import { FileUploadAndRead } from './Components/FileUploadAndRead';
 import { Header } from './Components/Header';
 import { HeaderText } from './Components/HeaderText';
 import { GroupCustomizeTextField } from './Components/GroupCustomizeTextField';
+import { CSVTemplateLink } from './Components/CSVTemplateLink';
  
 function App() {
   return (
@@ -44,6 +43,7 @@ function App() {
         <h2>
             <FileUploadAndRead />
             <GroupCustomizeTextField />
+            <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
         </h2>
 
       </header>
