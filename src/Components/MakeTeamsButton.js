@@ -30,6 +30,10 @@ export function MakeTeamsButton({inputNames}) {
     const [groups, setGroups] = useState([]);
 
     function handleClick() {
+      var button = document.getElementById("teamButton")
+      if(button.innerHTML === "Make new teams!"){
+        button.innerHTML = "Reshuffle again!";
+      }
       console.log(inputNames);
       if (inputNames.size > 0) {
         var teams = pairPreferences(inputNames);
@@ -39,8 +43,9 @@ export function MakeTeamsButton({inputNames}) {
 
     return (
      <div>
-        <button class="sm:rounded-lg" onClick={handleClick}>
+        <button class="sm:rounded-lg" id = "teamButton" onClick={handleClick}>
             Make new teams!
+
         </button> 
       
       {renderMembers({groups: groups})}
