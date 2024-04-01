@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.half-1 {
+  height: 200px;
+  width: 200px;
+  background-color: antiquewhite;
+  float: left
+}
+
+.half-2 {
+  height: 200px;
+  width: 200px;
+  background-color: red;
+  float: right
+}
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,7 +27,6 @@
   }
 } */
 
-
 .App-header {
   background-color: #5fa8d3;
   min-height: 100vh;
@@ -23,6 +36,16 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+}
+
+.logo {
+    height: 75px;
+    width: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    object-position: 25% 25%;
 }
 
 button {
@@ -36,10 +59,14 @@ button {
 
 .container {
     margin-left: 20px;
+    display: flex
+    
   }
   
 .container h1 {
     color: green
+    
+    
   }
   
 .container li {
@@ -57,9 +84,15 @@ button {
   }
 
   img {
-    height: 400px;
-    width: 400px;
+    height: 225px;
+    width: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    object-position: 25% 25%;
   }
+
 /* .App-link {
   color: #61dafb;
 }

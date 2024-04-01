@@ -1,9 +1,13 @@
+{/* not used atm */}
+
 export const Header = () => {
     return (
       <header className="bg-gray-800 text-white py-4">
         <div className="container mx-auto flex justify-between items-center px-4">
           {/* Logo */}
-          <div className="text-xl font-semibold">GroupMate</div>
+          <div className="text-xl font-semibold">GroupMate </div>
+
+          
   
           {/* Navigation */}
           <nav>
@@ -17,6 +21,5 @@ export const Header = () => {
       </header>
     );
   }
-
   
   export default Header;
