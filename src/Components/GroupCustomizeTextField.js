@@ -4,18 +4,18 @@ import React from "react";
 
 import { useState } from 'react';
 
-export function GroupCustomizeTextField({title,content}) {
-  const [answer, setAnswer] = useState('');
+export function GroupCustomizeTextField({inputSize,onSizeChange}) {
+//   const [answer, setAnswer] = useState('');
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('typing');
-  const [isActive, setIsActive] = useState(false);
+//   const [isActive, setIsActive] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus('submitting');
     setError(null);
     try {
-      await submitForm(answer);
+      await submitForm(inputSize);
       setStatus('success');
     } catch (err) {
       setStatus('typing');
@@ -23,26 +23,24 @@ export function GroupCustomizeTextField({title,content}) {
     }
   }
 
-  function handleTextareaChange(e) {
-    setAnswer(e.target.value);
-  }
+//   function handleTextareaChange(e) {
+//     setAnswer(e.target.value);
+//   }
 
-  function Input({title,value,onChange}) {
   return (
     <>
-      <h2> {title} </h2>
+      <h2> How many teams do you want to create </h2>
       <form  onSubmit={handleSubmit}>
         <textarea
-          value={answer}
-          onChange={handleTextareaChange}
+          value={inputSize}
+          onChange={onSizeChange}
           disabled={status === 'submitting'}
         />
         <br />
         <button class="sm:rounded-lg"
         disabled={
-          answer.length === 0 ||
-        //   isNaN(answer) ||
-          answer == 0 ||
+          inputSize.length === 0 ||
+          inputSize == 0 ||
           status === 'submitting'
         }>
           Submit
@@ -58,10 +56,9 @@ export function GroupCustomizeTextField({title,content}) {
 }
 
 function submitForm(answer) {
-    // Pretend it's hitting the network.
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (isNaN(answer)) {
+        if (isNaN(inputSize)) {
           reject(new Error("Number of groups needs to be a number"));
         } else {
           resolve("Form submitted successfully!");
@@ -71,4 +68,3 @@ function submitForm(answer) {
 
 }
 
-}
