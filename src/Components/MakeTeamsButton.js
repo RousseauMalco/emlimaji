@@ -31,11 +31,9 @@ export function MakeTeamsButton({inputNames}) {
 
     function handleClick() {
       var button = document.getElementById("teamButton")
-      if(button.innerHTML === "Make new teams!"){
-        button.innerHTML = "Reshuffle again!";
-      }
       console.log(inputNames);
       if (inputNames.size > 0) {
+        button.innerHTML = "Reshuffle again!";
         var teams = pairPreferences(inputNames);
         setGroups(teams);
       }
