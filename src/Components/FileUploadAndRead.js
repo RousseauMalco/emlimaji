@@ -13,7 +13,7 @@ export function FileUploadAndRead() {
     return (
         <div>
           <FileUpload onRead={handleRead} />
-          <GroupCustomizeTextField inputSize={tot_group} onSizeChange={(newTotGroup) => setTotGroup(newTotGroup)}> </GroupCustomizeTextField>
+          <GroupCustomizeTextField inputSize={tot_group} onSizeChange={(newTotGroup) => setTotGroup(newTotGroup)} />
           < MakeTeamsButton inputNames={readData} tot_group={tot_group}/>
         </div>
     );

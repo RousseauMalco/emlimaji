@@ -1,6 +1,5 @@
 
-
-let tot_groups = 0;
+let tot_groups = 4;
 let desired_size = 0;
 let max_size = 0;
 
