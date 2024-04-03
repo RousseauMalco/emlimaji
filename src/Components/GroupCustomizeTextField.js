@@ -4,7 +4,7 @@ import React from "react";
 
 import { useState } from 'react';
 
-export function GroupCustomizeTextField({title,content}) {
+export function GroupCustomizeTextField({title,inputSize}) {
   const [answer, setAnswer] = useState('');
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('typing');
@@ -27,7 +27,6 @@ export function GroupCustomizeTextField({title,content}) {
     setAnswer(e.target.value);
   }
 
-  function Input({title,value,onChange}) {
   return (
     <>
       <h2> {title} </h2>
@@ -71,4 +70,3 @@ function submitForm(answer) {
 
 }
 
-}
