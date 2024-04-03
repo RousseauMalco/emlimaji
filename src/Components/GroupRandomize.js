@@ -1,3 +1,5 @@
+
+
 let tot_groups = 0;
 let desired_size = 0;
 let max_size = 0;
@@ -5,7 +7,7 @@ let max_size = 0;
 
 // WIP: Testing for making groups with responders' desire to work with someone
 export function pairPreferences(people){
-
+    
     // names[i][1] = access the responders' chosen person they want to work with
     // 1) pair up teams first then remove them from the list of names
     // 2) remaining names that are not paired up are then randomized
