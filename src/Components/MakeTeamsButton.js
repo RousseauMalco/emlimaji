@@ -33,8 +33,8 @@ export function MakeTeamsButton({inputNames,tot_group}) {
       var button = document.getElementById("teamButton")
       console.log(inputNames);
       if (inputNames.size > 0) {
+        button.innerHTML = "Reshuffle again!";
         var teams = pairPreferences({people:inputNames,tot_groups:tot_group});
-
         setGroups(teams);
       }
     }
