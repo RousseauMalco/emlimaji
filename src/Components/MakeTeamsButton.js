@@ -31,12 +31,10 @@ export function MakeTeamsButton({inputNames,tot_group}) {
 
     function handleClick() {
       var button = document.getElementById("teamButton")
-      if(button.innerHTML === "Make new teams!"){
-        button.innerHTML = "Reshuffle again!";
-      }
       console.log(inputNames);
       if (inputNames.size > 0) {
         var teams = pairPreferences({people:inputNames,tot_groups:tot_group});
+
         setGroups(teams);
       }
     }
