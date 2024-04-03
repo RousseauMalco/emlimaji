@@ -6,7 +6,7 @@ let max_size = 0;
 
 
 // WIP: Testing for making groups with responders' desire to work with someone
-export function pairPreferences(people){
+export function pairPreferences({people,tot_groups}){
     
     // names[i][1] = access the responders' chosen person they want to work with
     // 1) pair up teams first then remove them from the list of names
@@ -22,7 +22,7 @@ export function pairPreferences(people){
     const groups = [];
 
     // the teacher chooses the # of groups
-    tot_groups = 4;
+    tot_groups = tot_groups;
     desired_size = Math.floor(people.size/tot_groups);
     max_size = desired_size + 1
 
@@ -67,10 +67,6 @@ function groupRandomizer(people, groups) {
 
     const groupGroup = groups;
     
-    // let tot_groups = 4;  // the teacher chooses the # of groups
-    // let desired_size = Math.floor(people.size/tot_groups);
-    // let max_size = desired_size + 1
-
     people.forEach(element => {
         if (!contains(groups, element.name)) {
             let position = getRandomInt(tot_groups);

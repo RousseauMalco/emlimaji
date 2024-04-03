@@ -26,7 +26,7 @@ function renderMembers(props) {
   }
 }
 
-export function MakeTeamsButton({inputNames}) {
+export function MakeTeamsButton({inputNames,tot_group}) {
     const [groups, setGroups] = useState([]);
 
     function handleClick() {
@@ -36,7 +36,7 @@ export function MakeTeamsButton({inputNames}) {
       }
       console.log(inputNames);
       if (inputNames.size > 0) {
-        var teams = pairPreferences(inputNames);
+        var teams = pairPreferences({people:inputNames,tot_groups:tot_group});
         setGroups(teams);
       }
     }

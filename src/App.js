@@ -4,7 +4,6 @@ import './App.css';
 import { FileUploadAndRead } from './Components/FileUploadAndRead';
 import { Header } from './Components/Header';
 import { HeaderText } from './Components/HeaderText';
-import { GroupCustomizeTextField } from './Components/GroupCustomizeTextField';
 import { CSVTemplateLink } from './Components/CSVTemplateLink';
  
 function App() {
@@ -42,7 +41,6 @@ function App() {
 
         <h2>
             <FileUploadAndRead />
-            <GroupCustomizeTextField />
             <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
         </h2>
 
