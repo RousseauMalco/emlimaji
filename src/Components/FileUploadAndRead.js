@@ -13,16 +13,12 @@ export function FileUploadAndRead() {
         setReadData(value);
     };
 
-    const handleAnswer = (option) => {
-        setSelectedOption(option);
-      };
-    
     return (
         <div>
           <FileUpload onRead={handleRead} />
-          <MultipleChoice question="Choose an option" options={["Group Size","Number of groups"]} onAnswer={handleAnswer}> </MultipleChoice>
+          <MultipleChoice question="Choose an option" options={["Group Size","Number of groups"]} onAnswer={(option) => {setSelectedOption(option)}}> </MultipleChoice>
           <GroupCustomizeTextField inputSize={tot_group} onSizeChange={(newTotGroup) => setTotGroup(newTotGroup)} />
-          < MakeTeamsButton inputNames={readData} tot_group={tot_group}/>
+          < MakeTeamsButton inputNames={readData} tot_group={tot_group} option ={selectedOption}/>
         </div>
     );
 }

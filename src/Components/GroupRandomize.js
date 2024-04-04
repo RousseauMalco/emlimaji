@@ -5,7 +5,7 @@ let max_size = 0;
 
 
 // WIP: Testing for making groups with responders' desire to work with someone
-export function pairPreferences({people,tot_groups}){
+export function pairPreferences({people,input,option}){
     
     // names[i][1] = access the responders' chosen person they want to work with
     // 1) pair up teams first then remove them from the list of names
@@ -19,11 +19,16 @@ export function pairPreferences({people,tot_groups}){
 
     // put the group creator here
     const groups = [];
-
+    if (option==="Number of groups") {
+        tot_groups = input;
+        desired_size = Math.floor(people.size/tot_groups);
+        max_size = desired_size + 1
+    } else if (option === "Group Size") {
+        desired_size = input;
+        tot_groups = Math.floor(people.size/desired_size);
+    }
     // the teacher chooses the # of groups
-    tot_groups = tot_groups;
-    desired_size = Math.floor(people.size/tot_groups);
-    max_size = desired_size + 1
+    
 
     for (let i = 0; i < tot_groups; i++) {
         const groupi = [];

@@ -26,7 +26,7 @@ function renderMembers(props) {
   }
 }
 
-export function MakeTeamsButton({inputNames,tot_group}) {
+export function MakeTeamsButton({inputNames,tot_group, option}) {
     const [groups, setGroups] = useState([]);
 
     function handleClick() {
@@ -34,7 +34,7 @@ export function MakeTeamsButton({inputNames,tot_group}) {
       console.log(inputNames);
       if (inputNames.size > 0) {
         button.innerHTML = "Reshuffle again!";
-        var teams = pairPreferences({people:inputNames,tot_groups:tot_group});
+        var teams = pairPreferences({people:inputNames,input:tot_group, option:option});
         setGroups(teams);
       }
     }
