@@ -69,8 +69,8 @@ button {
   }
   
 .container h1 {
-    color: green
-    
+  float: left;
+  color: green;
     
   }
   
