@@ -7,8 +7,7 @@ import { MultipleChoice } from './GroupOrNumMem';
 export function FileUploadAndRead() {
     const [readData, setReadData] = useState('');
     const [tot_group, setTotGroup] = useState(4);
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [textFieldQuestion, setTextFieldQuestion] = useState("");
+    const [selectedOption, setSelectedOption] = useState("Group Size");
 
     const handleRead = (value) => {
         setReadData(value);

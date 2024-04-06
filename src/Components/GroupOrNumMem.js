@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export function MultipleChoice({ question, options, onAnswer }) {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("Group Size");
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
