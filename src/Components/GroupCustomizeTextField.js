@@ -5,7 +5,8 @@ import React from "react";
 export function GroupCustomizeTextField({title,inputSize,onSizeChange}) {
   return (
     <>
-      <h2> {title} </h2>
+
+      <h2> Preferred group size OR # of groups: </h2>
       <form >
         <textarea
           value={inputSize}
