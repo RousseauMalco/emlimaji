@@ -22,11 +22,12 @@ export function pairPreferences({people,input,option}){
     if (option==="Number of groups") {
         tot_groups = input;
         desired_size = Math.floor(people.size/tot_groups);
-        max_size = desired_size + 1
     } else if (option === "Group Size") {
         desired_size = input;
-        tot_groups = Math.floor(people.size/desired_size);
+        tot_groups = Math.ceil(people.size/desired_size);
     }
+
+    max_size = desired_size + 1;
     // the teacher chooses the # of groups
     
 
