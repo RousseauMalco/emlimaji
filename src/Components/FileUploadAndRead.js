@@ -13,12 +13,6 @@ export function FileUploadAndRead() {
         setReadData(value);
     };
 
-    if (selectedOption === "Group Size") {
-        setTextFieldQuestion("How many people in the group do you want?")
-    } else if (selectedOption === "Number of groups") {
-        setTextFieldQuestion("How many groups do you want")
-    }
-
     return (
         <div>
           <FileUpload onRead={handleRead} />
