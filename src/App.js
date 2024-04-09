@@ -5,6 +5,7 @@ import { FileUploadAndRead } from './Components/FileUploadAndRead';
 import { Header } from './Components/Header';
 import { HeaderText } from './Components/HeaderText';
 import { CSVTemplateLink } from './Components/CSVTemplateLink';
+import { MakeTeamsButton } from './Components/MakeTeamsButton';
  
 function App() {
   return (
@@ -29,26 +30,30 @@ function App() {
         </div>
       </header>
 
-      <header className="App-header">
+      {/* Main Part of Screen - Body */}
+
+      <body className = "App-body">
         <div>
-          <h1>
-            <HeaderText />
-          </h1>
-          {/* <div className='half-1'></div> */}
-          {/* <div className='half-2'></div> */}
-        </div>
+            <h1>
+              <HeaderText />
+            </h1>
+          </div> 
 
-        <h2>
-            <FileUploadAndRead />
-            <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
-        </h2>
-
-      </header>
+          <div className = "container">
+            <div className = "container-left">  
+              <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>[text about how our project works here] </p>
+              <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
+            </div>
+            <div class="vl"></div>
+            <div className = "container-right">
+              <p className="text-1xl text-gray-700 font-bold">Upload a CSV to get started: </p>
+              <FileUploadAndRead />
+            </div>
+      </div>
+      </body>
 
     </div>
   );
 }
-
-
 
 export default App;

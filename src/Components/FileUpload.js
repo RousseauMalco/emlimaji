@@ -17,12 +17,12 @@ export function FileUpload({onRead}) {
     
     return (
         <div>
-         <h1 class="sm:rounded-lg" >
-           <input 
-           type="file" 
-           accept=".csv"
-           onChange={handleFileChange} />
-         </h1>   
+          <h1 class="sm:rounded-lg" >
+            <input 
+            type="file" 
+            accept=".csv"
+            onChange={handleFileChange} />
+          </h1>   
          </div>
     ); 
  }

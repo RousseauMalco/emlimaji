@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.half-1 {
+/* .half-1 {
   height: 200px;
   width: 200px;
   background-color: antiquewhite;
@@ -14,7 +14,7 @@
   width: 200px;
   background-color: red;
   float: right
-}
+} */
 
 .p1 {
   font-family: monospace;
@@ -31,8 +31,8 @@
   }
 } */
 
-.App-header {
-  background-color: #5fa8d3;
+.App-body {
+  background-color: #c2e8ff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -55,41 +55,51 @@
 button {
   font-size: 8;
   margin: 0 10px;
-  width: 250px;
+  width: 200px;
   background-color: white;
   cursor: pointer;
   padding: 2px;
   }
 
 .container {
-    margin-left: 20px;
-    display: flex
-    
-    
+    /* margin-left: 20px; */
+    display: flex;
   }
+
+.container-left {
+  width: 40%; 
+  float: left;
+}
+
+
+.container-right {
+  width: 60%; 
+  /* float: right; */
+}
   
-.container h1 {
+/* .container h1 {
   float: left;
   color: green;
     
-  }
+  } */
   
 .container li {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    background-color: #1b4965;
+    background-color: #ffffff;
     font-family: 'Lexend Deca', sans-serif;
     width: 400px;
-    color: white;
+    color: rgb(5, 5, 5);
     padding: 15px;
     border-radius: 80px;
     border-style: solid;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    margin-left: calc((100% - (4 * 500px)) / 2);
+    /* margin-left: calc((100% - (4 * 500px)) / 2); */
   }
+  
 
   img {
     height: 225px;
@@ -101,15 +111,8 @@ button {
     object-position: 25% 25%;
   }
 
-/* .App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .vl {
+    border-left: 2px solid gray;
+    height: flex;
   }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+ 
