@@ -32,6 +32,8 @@
 } */
 
 .App-body {
+  height: auto;
+  width: auto;
   background-color: #c2e8ff;
   min-height: 100vh;
   display: flex;
@@ -68,7 +70,7 @@ button {
   }
 
 .container-left {
-  width: 30%; 
+  width: 25%; 
   float: left;
 }
 
@@ -111,3 +113,16 @@ button {
     height: flex;
   }
  
+  @media only screen and (max-width: 400px ){
+    .App-body {
+      width: 90%;
+      height: 90%;
+    }
+  }
+
+  @media only screen and (max-width: 800px ){
+    .App-body {
+      width: 100%;
+      height: 90%;
+    }
+  }
