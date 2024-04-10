@@ -46,7 +46,7 @@ function App() {
             </div>
             <div class="vl"></div>
             <div className = "container-right">
-              <p className="text-1xl text-gray-700 font-bold">Upload a CSV to get started: </p>
+              <p className="text-1xl text-gray-700 font-bold">Got your CSV? Upload it here: </p>
               <FileUploadAndRead />
             </div>
       </div>

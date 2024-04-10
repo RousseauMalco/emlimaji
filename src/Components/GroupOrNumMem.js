@@ -9,7 +9,7 @@ export function MultipleChoice({ question, options, onAnswer }) {
   };
 
   return (
-    <div>
+    <div className='container'>
       <h2>{question}</h2>
       <ul>
         {options.map((option, index) => (
