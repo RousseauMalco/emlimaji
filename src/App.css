@@ -42,6 +42,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+
 }
 
 .logo {
@@ -55,12 +56,14 @@
 }
 
 button {
-  font-size: 8;
+  font-size: 2vh;
   margin: 0 10px;
-  width: 200px;
+  height: 10vh;
+  width: 20vw;
   background-color: white;
   cursor: pointer;
   padding: 2px;
+  
   }
 
 .container {
