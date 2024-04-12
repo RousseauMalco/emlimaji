@@ -11,21 +11,21 @@ export function MultipleChoice({ question, options, onAnswer }) {
   return (
     <div className='container'>
       <h2>{question}</h2>
-      <ul>
-        {options.map((option, index) => (
-          <li key={index}>
-            <label>
-              <input
-                type="radio"
-                value={option}
-                checked={selectedOption === option}
-                onChange={() => handleOptionSelect(option)}
-              />
-              {option}
-            </label>
-          </li>
-        ))}
-      </ul>
+      <div class="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20">
+          {options.map((option, index) => (
+            <li key={index}>
+              <label>
+                <input
+                  type="radio"
+                  value={option}
+                  checked={selectedOption === option}
+                  onChange={() => handleOptionSelect(option)}
+                />
+                {option}
+              </label>
+            </li>
+          ))}
+      </div>  
     </div>
   );
 }
