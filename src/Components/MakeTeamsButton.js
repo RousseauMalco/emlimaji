@@ -16,13 +16,15 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       }
     }
 
-    const dragItem = useRef();
+    const dragItem = useRef(null); //maybe problem is here
     function dragStart(e, memberIndex){ 
       console.log('dragStart called');
-      dragItem.current = memberIndex;};
+      dragItem.current = memberIndex;
+      console.log(groups.flatMap(group => group)[memberIndex]);
+    };
     
     function dragOver(e) {
-      console.log('dragOver called');
+      // console.log('dragOver called');
       e.preventDefault();
     }
 
@@ -31,17 +33,23 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       e.preventDefault();
       const draggedMemberIndex = dragItem.current;
       const draggedMember = groups.flatMap(group => group)[draggedMemberIndex];
+      console.log(draggedMember); //Wrong drop member
       const updatedGroups = [...groups];
-      // Remove the dragged member from its original group
-      const originalGroupIndex = updatedGroups.findIndex(group => group.includes(draggedMember));
-      const originalGroup = updatedGroups[originalGroupIndex];
+
+      let originalGroupIndex;
+      let originalGroup;
+      updatedGroups.forEach((group, index) => {
+        if (group.includes(draggedMember)) {
+          originalGroupIndex = index;
+          originalGroup = group;
+        }
+      });
       originalGroup.splice(originalGroup.indexOf(draggedMember), 1);
 
-      // Add the dragged member to the target group
+      updatedGroups[targetGroupIndex] = updatedGroups[targetGroupIndex] || [];
       updatedGroups[targetGroupIndex].push(draggedMember);
 
       setGroups(updatedGroups);
-      renderMembers({groups:groups});
     }
 
     function renderMembers(props) {
@@ -51,11 +59,21 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
             <div class="grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
-                 <div class="ring-3 sm:rounded-xl relative bg-white m-2 px-10 pt-10 pb-10 shadow-xl ring-gray-900/5" key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
-                    <ul class="x-flex-col x-space-x-5">
-                      {group.map((member,memberIndex) => <li key={memberIndex} id={`member-${memberIndex}`} class="x-inline-block" draggable="true" onDragStart={(e) => dragStart(e, memberIndex)} onDragOver={dragOver}
-                            onDrop={(e) => drop(e,groupIndex)}> {member}
-                      </li>)}
+                 <li class="ring-3 sm:rounded-xl relative px-20 pt-20 pb-20 shadow-xl ring-gray-900" key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
+                    Group: 
+                    <ul class="flex-col space-x-5" onDragOver={dragOver}
+                            onDrop={(e) => drop(e,groupIndex)}>
+                      {
+                        group.map((member,memberIndex) =>
+                          <li key={memberIndex}
+                            id={`member:${memberIndex}`}
+                            class="inline-block"
+                            draggable="true"
+                            onDragStart={(e) => dragStart(e, memberIndex)}>
+                            {member}
+                          </li>
+                        )
+                      }
                     </ul>
                  </div>
                 )
