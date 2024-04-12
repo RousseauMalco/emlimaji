@@ -73,17 +73,17 @@ button {
   }
 
 .container-left {
-  width: 25%; 
-  float: left;
+  width: 40%; 
+  /* float: left; */
 }
 
 
 .container-right {
-  width: 70%; 
+  width: 60%; 
   /* float: right; */
 }
   
-.container li {
+.ignored .container li {
     display: flex;
     flex-direction: column;
     font-size: 20px;

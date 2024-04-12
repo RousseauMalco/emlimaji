@@ -58,12 +58,12 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {
           return (
-            <ul class="grid grid-cols-2">
+            <div class="grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
-                 <li class="ring-3 sm:rounded-xl relative px-20 pt-20 pb-20 shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg" key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
+                 <li class="ring-3 sm:rounded-xl relative px-20 pt-20 pb-20 shadow-xl ring-gray-900" key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
                     Group: 
-                    <ul class="space-x-5" onDragOver={dragOver}
+                    <ul class="flex-col space-x-5" onDragOver={dragOver}
                             onDrop={(e) => drop(e,groupIndex)}>
                       {
                         group.map((member) =>
@@ -77,10 +77,10 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                         )
                       }
                     </ul>
-                 </li>
+                 </div>
                 )
               }
-            </ul>
+            </div>
           );
       } else {
           return(
@@ -93,7 +93,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
 
     return (
      <div>
-        <button class="sm:rounded-lg" id = "teamButton" onClick={handleClick} disabled={isNaN(tot_group) || tot_group === 0 || tot_group === ""}>
+        <button class="sm:rounded-xl" id = "teamButton" onClick={handleClick} disabled={isNaN(tot_group) || tot_group === 0 || tot_group === ""}>
             Make new teams!
 
         </button> 

@@ -23,8 +23,8 @@ function App() {
           {/* Navigation */}
           <nav>
             <ul className="flex space-x-4">
-              <li><a href="#" className="hover:text-gray-300">Make Teams!</a></li>
-              <li><a href="#" className="hover:text-gray-300">About</a></li>
+              <li><a href="#" className="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20 hover:text-gray-300">Make Teams!</a></li>
+              <li><a href="#" className="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20 hover:text-gray-300">About</a></li>
             </ul>
           </nav>
         </div>
