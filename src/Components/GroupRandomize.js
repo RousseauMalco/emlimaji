@@ -21,7 +21,7 @@ export function pairPreferences({people,input,option}){
     const groups = [];
     if (option==="Number of groups") {
         tot_groups = input;
-        desired_size = Math.floor(people.size/tot_groups);
+        desired_size = Math.ceil(people.size/tot_groups);
     } else if (option === "Group Size") {
         desired_size = input;
         tot_groups = Math.ceil(people.size/desired_size);
