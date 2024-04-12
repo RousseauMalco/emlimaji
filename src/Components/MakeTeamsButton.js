@@ -16,13 +16,15 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       }
     }
 
-    const dragItem = useRef();
+    const dragItem = useRef(null); //maybe problem is here
     function dragStart(e, memberIndex){ 
       console.log('dragStart called');
-      dragItem.current = memberIndex;};
+      dragItem.current = memberIndex;
+      console.log(groups.flatMap(group => group)[memberIndex]);
+    };
     
     function dragOver(e) {
-      console.log('dragOver called');
+      // console.log('dragOver called');
       e.preventDefault();
     }
 
@@ -31,24 +33,23 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       e.preventDefault();
       const draggedMemberIndex = dragItem.current;
       const draggedMember = groups.flatMap(group => group)[draggedMemberIndex];
+      console.log(draggedMember); //Wrong drop member
       const updatedGroups = [...groups];
 
       let originalGroupIndex;
       let originalGroup;
       updatedGroups.forEach((group, index) => {
-      if (group.includes(draggedMember)) {
-        originalGroupIndex = index;
-        originalGroup = group;
-      }
+        if (group.includes(draggedMember)) {
+          originalGroupIndex = index;
+          originalGroup = group;
+        }
       });
       originalGroup.splice(originalGroup.indexOf(draggedMember), 1);
-
 
       updatedGroups[targetGroupIndex] = updatedGroups[targetGroupIndex] || [];
       updatedGroups[targetGroupIndex].push(draggedMember);
 
       setGroups(updatedGroups);
-      renderMembers({groups:groups});
     }
 
     function renderMembers(props) {
@@ -62,8 +63,17 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                     Group: 
                     <ul class="space-x-5" onDragOver={dragOver}
                             onDrop={(e) => drop(e,groupIndex)}>
-                      {group.map((member,memberIndex) => <li key={memberIndex} id={`member:${memberIndex}`} class="inline-block" draggable="true" onDragStart={(e) => dragStart(e, memberIndex)} > {member}
-                      </li>)}
+                      {
+                        group.map((member,memberIndex) =>
+                          <li key={memberIndex}
+                            id={`member:${memberIndex}`}
+                            class="inline-block"
+                            draggable="true"
+                            onDragStart={(e) => dragStart(e, memberIndex)}>
+                            {member}
+                          </li>
+                        )
+                      }
                     </ul>
                  </li>
                 )
