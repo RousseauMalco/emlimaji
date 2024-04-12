@@ -3,7 +3,6 @@ import React from 'react';
 import './App.css';
 import { FileUploadAndRead } from './Components/FileUploadAndRead';
 import { Header } from './Components/Header';
-import { HeaderText } from './Components/HeaderText';
 import { CSVTemplateLink } from './Components/CSVTemplateLink';
 import { MakeTeamsButton } from './Components/MakeTeamsButton';
  
@@ -23,8 +22,8 @@ function App() {
           {/* Navigation */}
           <nav>
             <ul className="flex space-x-4">
-              <li><a href="#" className="hover:text-gray-300">Make Teams!</a></li>
-              <li><a href="#" className="hover:text-gray-300">About</a></li>
+              <li><a className="header-button">Make Teams!</a></li>
+              <li><a className="header-button">About</a></li>
             </ul>
           </nav>
         </div>
@@ -34,10 +33,10 @@ function App() {
 
       <body className = "App-body">
         <div>
-            <h1>
-              <HeaderText />
-            </h1>
-          </div> 
+          <p1 className="title">
+            Welcome to GroupMate!
+          </p1>
+        </div> 
 
           <div className = "container">
             <div className = "container-left">  

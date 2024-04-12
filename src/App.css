@@ -2,20 +2,6 @@
   text-align: center;
 }
 
-/* .half-1 {
-  height: 200px;
-  width: 200px;
-  background-color: antiquewhite;
-  float: left
-}
-
-.half-2 {
-  height: 200px;
-  width: 200px;
-  background-color: red;
-  float: right
-} */
-
 .p1 {
   font-family: monospace;
 }
@@ -44,6 +30,30 @@
   color: black;
 
 }
+
+/* WIP */
+.header-button{
+  font-size: 2vh;
+  margin: 0 10px;
+  height: 10vh;
+  width: 20vw;
+  background-color: white;
+  cursor: pointer;
+  padding: 2px;
+}
+
+/* WIP */
+.title{
+  color: rgb(5, 5, 5);
+  height: 10vw;
+  font-weight: bold;
+  font-size: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
 
 .logo {
     height: 75px;
