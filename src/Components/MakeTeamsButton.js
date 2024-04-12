@@ -17,10 +17,10 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
     }
 
     const dragItem = useRef(null); //maybe problem is here
-    function dragStart(e, memberIndex){ 
+    function dragStart(e, memberID){ 
       console.log('dragStart called');
-      dragItem.current = memberIndex;
-      console.log(groups.flatMap(group => group)[memberIndex]);
+      dragItem.current = memberID;
+      console.log(memberID);
     };
     
     function dragOver(e) {
@@ -31,8 +31,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
     function drop(e,targetGroupIndex) {
       console.log('drop called');
       e.preventDefault();
-      const draggedMemberIndex = dragItem.current;
-      const draggedMember = groups.flatMap(group => group)[draggedMemberIndex];
+      const draggedMember = dragItem.current;
       console.log(draggedMember); //Wrong drop member
       const updatedGroups = [...groups];
 
@@ -44,7 +43,10 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
           originalGroup = group;
         }
       });
-      originalGroup.splice(originalGroup.indexOf(draggedMember), 1);
+
+      if (originalGroup) {
+        updatedGroups[originalGroupIndex] = originalGroup.filter(member => member !== draggedMember);
+      }
 
       updatedGroups[targetGroupIndex] = updatedGroups[targetGroupIndex] || [];
       updatedGroups[targetGroupIndex].push(draggedMember);
@@ -64,12 +66,12 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                     <ul class="space-x-5" onDragOver={dragOver}
                             onDrop={(e) => drop(e,groupIndex)}>
                       {
-                        group.map((member,memberIndex) =>
-                          <li key={memberIndex}
-                            id={`member:${memberIndex}`}
+                        group.map((member) =>
+                          <li
+                            id={{member}}
                             class="inline-block"
                             draggable="true"
-                            onDragStart={(e) => dragStart(e, memberIndex)}>
+                            onDragStart={(e) => dragStart(e,member)}>
                             {member}
                           </li>
                         )
