@@ -37,14 +37,14 @@ export function pairPreferences({people,input,option}){
     }
 
     people.forEach(element => {
-        if (!contains(groups, element.name)) {
+        if (!contains(groups, element)) {
             if (element.like != "" && element.like != null) {
                 const pref = element.like.split(',');
-                const grouped = [element.name];
+                const grouped = [element];
                 pref.forEach(prefName => {
                     let person = people.get(prefName);
                     if (person != null && person.like.includes(element.name) && grouped.length < max_size) {
-                        grouped.push(prefName);
+                        grouped.push(person);
                     }
                 });
         
@@ -73,20 +73,20 @@ function groupRandomizer(people, groups) {
     const groupGroup = groups;
     
     people.forEach(element => {
-        if (!contains(groups, element.name)) {
+        if (!contains(groups, element)) {
             let position = getRandomInt(tot_groups);
             let placed = false;
     
             for (let j = 0; j < groupGroup.length; j ++) {
-                if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name == element.dislike) == null) {
-                    groupGroup[j].push(element.name);
+                if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name.name == element.dislike) == null) {
+                    groupGroup[j].push(element);
                     placed = true;
                 }
             }
             if (!placed) {
                 for (let k = 0; k < groupGroup.length; k++) {
-                    if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name == element.dislike) == null) {
-                        groupGroup[k].push(element.name);
+                    if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name.name == element.dislike) == null) {
+                        groupGroup[k].push(element);
                         placed = true;
                         break;
                     }
@@ -94,8 +94,8 @@ function groupRandomizer(people, groups) {
     
                 if (!placed) {
                     for (let j = 0; j < groupGroup.length; j++) {
-                        if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name == element.dislike) == null) {
-                            groupGroup[j].push(element.name);
+                        if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name.name == element.dislike) == null) {
+                            groupGroup[j].push(element);
                             break;
                         }
                     }
