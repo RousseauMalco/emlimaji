@@ -34,21 +34,18 @@ function App() {
 
       <body className = "App-body">
         <div>
-            <h1>
-              <HeaderText />
-            </h1>
-          </div> 
-
-          <div className = "container">
-            <div className = "container-left">  
-              <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>[text about how our project works here] </p>
-              <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
-            </div>
-            <div class="vl"></div>
-            <div className = "container-right">
-              <p className="text-1xl text-gray-700 font-bold">Got your CSV? Upload it here: </p>
-              <FileUploadAndRead />
-            </div>
+            <HeaderText />
+        </div> 
+      <div className = "container">
+        <div className = "container-left">  
+          <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>[text about how our project works here] </p>
+          <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
+        </div>
+        <div class="vl"></div>
+        <div className = "container-right">
+          <p className="text-1xl text-gray-700 font-bold">Got your CSV? Upload it here: </p>
+          <FileUploadAndRead />
+        </div>
       </div>
       </body>
 

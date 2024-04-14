@@ -16,10 +16,6 @@
   float: right
 } */
 
-.p1 {
-  font-family: monospace;
-}
-
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -42,6 +38,19 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  margin-top: -20px;
+
+}
+
+.title{
+  color: rgb(5, 5, 5);
+  height: 10vw;
+  font-weight: bold;
+  font-size: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -25vh;
 
 }
 

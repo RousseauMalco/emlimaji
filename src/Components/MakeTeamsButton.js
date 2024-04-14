@@ -77,7 +77,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                         )
                       }
                     </ul>
-                 </div>
+                 </li>
                 )
               }
             </div>
