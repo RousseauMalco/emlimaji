@@ -42,8 +42,8 @@ export function pairPreferences({people,input,option}){
                 const pref = element.like.split(',');
                 const grouped = [element];
                 pref.forEach(prefName => {
-                    let person = people.get(prefName);
-                    if (person != null && person.like.includes(element.name) && grouped.length < max_size) {
+                    let person = people.get(prefName.toLowerCase());
+                    if (person != null && person.like.includes(element.name.toLowerCase()) && grouped.length < max_size) {
                         grouped.push(person);
                     }
                 });
@@ -78,14 +78,14 @@ function groupRandomizer(people, groups) {
             let placed = false;
     
             for (let j = 0; j < groupGroup.length; j ++) {
-                if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((name) => name.name == element.dislike) == null) {
+                if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((person) => person.name.toLowerCase().equals(element.dislike.toLowerCase()) || person.dislike.toLowerCase().equals(element.name.toLowerCase())) == null) {
                     groupGroup[j].push(element);
                     placed = true;
                 }
             }
             if (!placed) {
                 for (let k = 0; k < groupGroup.length; k++) {
-                    if (groupGroup[k].length < desired_size && groupGroup[k].find((name) => name.name == element.dislike) == null) {
+                    if (groupGroup[k].length < desired_size && groupGroup[k].find((person) => person.name.toLowerCase().equals(element.dislike.toLowerCase()) || person.dislike.toLowerCase().equals(element.name.toLowerCase())) == null) {
                         groupGroup[k].push(element);
                         placed = true;
                         break;
@@ -94,7 +94,7 @@ function groupRandomizer(people, groups) {
     
                 if (!placed) {
                     for (let j = 0; j < groupGroup.length; j++) {
-                        if (groupGroup[j].length < max_size && groupGroup[j].find((name) => name.name == element.dislike) == null) {
+                        if (groupGroup[j].length < max_size && groupGroup[j].find((person) => person.name.toLowerCase().equals(element.dislike.toLowerCase()) || person.dislike.toLowerCase().equals(element.name.toLowerCase())) == null) {
                             groupGroup[j].push(element);
                             break;
                         }
