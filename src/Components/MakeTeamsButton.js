@@ -72,7 +72,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                             class="inline-block"
                             draggable="true"
                             onDragStart={(e) => dragStart(e,member)}>
-                            {member}
+                            {member.name}
                           </li>
                         )
                       }
