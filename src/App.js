@@ -2,7 +2,6 @@ import jimLogo from './Components/jimLogo.png';
 import React from 'react';
 import './App.css';
 import { FileUploadAndRead } from './Components/FileUploadAndRead';
-import { Header } from './Components/Header';
 import { CSVTemplateLink } from './Components/CSVTemplateLink';
 import { MakeTeamsButton } from './Components/MakeTeamsButton';
  
@@ -32,9 +31,6 @@ function App() {
       {/* Main Part of Screen - Body */}
 
       <body className = "App-body">
-
-          <h1 class="text-4x1 font-bold text-gray-800"> Welcome to GroupMate! </h1>
-
       <div className = "container">
         <div className = "container-left">  
           <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>[text about how our project works here] </p>

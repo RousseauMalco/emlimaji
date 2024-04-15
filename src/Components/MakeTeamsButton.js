@@ -62,7 +62,6 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
               {
                 props.groups.map((group,groupIndex) =>
                  <li class="ring-3 sm:rounded-xl relative px-20 pt-20 pb-20 shadow-xl ring-gray-900" key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
-                    Group: 
                     <ul class="flex-col space-x-5" onDragOver={dragOver}
                             onDrop={(e) => drop(e,groupIndex)}>
                       {

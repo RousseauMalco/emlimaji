@@ -16,7 +16,7 @@ export function FileUploadAndRead() {
     return (
         <div>   
             <FileUpload onRead={handleRead}/>
-            <div class='flex flex-row m-5'>
+            <div class='flex flex-row m-5 mx-20'>
                 <div class='grow-0 m-1'>
                     <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {setSelectedOption(option)}} > </MultipleChoice>  
                 </div>
