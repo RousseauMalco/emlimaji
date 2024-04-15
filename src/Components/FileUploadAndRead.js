@@ -16,8 +16,12 @@ export function FileUploadAndRead() {
     return (
         <div>   
             <FileUpload onRead={handleRead}/>
-            <MultipleChoice question="Choose an option:" options={["Group Size","Number of groups"]} onAnswer={(option) => {setSelectedOption(option)}} > </MultipleChoice>  
-            <GroupCustomizeTextField inputSize={tot_group} onSizeChange={(newTotGroup) => setTotGroup(newTotGroup)} />
+            <div class='flex flex-row m-5'>
+                <div class='grow-0 m-1'>
+                    <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {setSelectedOption(option)}} > </MultipleChoice>  
+                </div>
+                <GroupCustomizeTextField inputSize={tot_group} onSizeChange={(newTotGroup) => setTotGroup(newTotGroup)} />
+            </div>
             <MakeTeamsButton inputNames={readData} tot_group={tot_group} option ={selectedOption}/>     
         </div>
        
