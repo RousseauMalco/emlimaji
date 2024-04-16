@@ -74,32 +74,26 @@ function groupRandomizer(people, existingGroups) {
     
     people.forEach(person => {
         if (!groupsContain(existingGroups, person)) {
-            let newPosition = getRandomInt(tot_groups);
             let placed = false;
-            let currentName = person.name.toLowerCase();
-            let currentDislike = person.dislike.toLowerCase();
     
-            for (let j = 0; j < newGroups.length; j++) {
-                if (newPosition == j && newGroups[j].length < desired_size && newGroups[j].find((person) => currentDislike.includes(person.name.toLowerCase()) || person.dislike.toLowerCase().includes(currentName)) == null) {
-                    newGroups[j].push(person);
-                    placed = true;
-                }
+            let randPosition = getRandomInt(tot_groups);
+            if (tryPlacingInGroup(newGroups[randPosition], person, desired_size)) {
+                placed = true;
             }
+
             if (!placed) {
-                for (let k = 0; k < newGroups.length; k++) {
-                    if (newGroups[k].length < desired_size && newGroups[k].find((person) => currentDislike.includes(person.name.toLowerCase()) || person.dislike.toLowerCase().includes(currentName)) == null) {
-                        newGroups[k].push(person);
+                for (const group of newGroups) {
+                    if (tryPlacingInGroup(group, person, desired_size)) {
                         placed = true;
                         break;
                     }
                 }
-    
-                if (!placed) {
-                    for (let j = 0; j < newGroups.length; j++) {
-                        if (newGroups[j].length < max_size && newGroups[j].find((person) => currentDislike.includes(person.name.toLowerCase()) || person.dislike.toLowerCase().includes(currentName)) == null) {
-                            newGroups[j].push(person);
-                            break;
-                        }
+            }
+
+            if (!placed) {
+                for (const group of newGroups) {
+                    if (tryPlacingInGroup(group, person, max_size)) {
+                        break;
                     }
                 }
             }
@@ -112,6 +106,26 @@ function groupRandomizer(people, existingGroups) {
     }
 
     return newGroups;
+}
+
+// Try placing the person in the given group, respecting likes and dislikes as well as the given size limit.
+// Returns true if the person was placed in the group.
+function tryPlacingInGroup(group, person, sizeLimit) {
+    let currentName = person.name.toLowerCase();
+    let currentDislike = person.dislike.toLowerCase();
+    
+    if (group.length >= sizeLimit) {
+        return false;
+    }
+    if (group.find((otherPerson) =>
+        currentDislike.includes(otherPerson.name.toLowerCase())
+        || otherPerson.dislike.toLowerCase().includes(currentName))
+    ) {
+        return false;
+    }
+
+    group.push(person);
+    return true;
 }
 
 function getRandomInt(max) {
