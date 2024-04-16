@@ -39,7 +39,7 @@ export function pairPreferences({people,input,option}){
     people.forEach(element => {
         if (!groupsContain(groups, element)) {
             if (element.like != "" && element.like != null) {
-                const pref = element.like.split(',');
+                const pref = element.like.split(', ');
                 const grouped = [element];
                 pref.forEach(prefName => {
                     let person = people.get(prefName.toLowerCase());
