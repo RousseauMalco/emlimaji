@@ -56,9 +56,21 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
 
 
     const freezeItem = useRef(null);
-    function freezeStart(e, freezeID) {
-      freezeItem.current = freezeID;
-    }
+    function toggleFreeze(memberID) {
+      const updatedGroups = [...groups];
+
+      updatedGroups.forEach((group, index) => {
+          if (group.includes(memberID)) {
+              const memberIndex = group.indexOf(memberID);
+              group[memberIndex] = {
+                  ...group[memberIndex],
+                  frozen: !group[memberIndex].frozen
+              };
+          }
+      });
+
+      setGroups(updatedGroups);
+  }
 
     function renderMembers(props) {
       console.log("render called")
@@ -74,8 +86,9 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                         group.map((member) =>
                           <li
                             id={{member}}
-                            class="inline-block"
-                            draggable="true"
+                            className={`inline-block ${member.frozen ? 'frozen' : ''}`} 
+                            draggable="true" 
+                            onClick={() => toggleFreeze(member)}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
                           </li>
