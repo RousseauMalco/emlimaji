@@ -64,16 +64,6 @@
     margin-left: calc((100% - (2 * 40px)) / 2);
 }
 
-button {
-  font-size: 2vh;
-  margin: 0 10px;
-  height: 10vh;
-  width: 20vw;
-  background-color: white;
-  cursor: pointer;
-  padding: 2px;
-  
-  }
 
 .container {
     /* margin-left: 20px; */
@@ -91,24 +81,7 @@ button {
   width: 60%; 
   /* float: right; */
 }
-  
-.ignored .container li {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    background-color: #ffffff;
-    font-family: 'Lexend Deca', sans-serif;
-    width: 300px;
-    color: rgb(5, 5, 5);
-    padding: 5px;
-    border-radius: 80px;
-    border-style: solid;  
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    /* margin-left: calc((100% - (4 * 500px)) / 2); */
-  }
-  
+
 
   img {
     height: 200px;

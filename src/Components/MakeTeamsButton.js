@@ -92,7 +92,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
 
     return (
      <div>
-        <button class="sm:rounded-xl" id = "teamButton" onClick={handleClick} disabled={isNaN(tot_group) || tot_group === 0 || tot_group === ""}>
+        <button class=" bg-white py-2 px-4 rounded sm:rounded-xl" id = "teamButton" onClick={handleClick} disabled={isNaN(tot_group) || tot_group === 0 || tot_group === ""}>
             Make new teams!
 
         </button> 
