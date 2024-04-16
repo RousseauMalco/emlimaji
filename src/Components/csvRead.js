@@ -24,8 +24,8 @@ export function csvRead(csv) {
                 // person["like"] = rows[i][2];
                 // people[i] = person;
                 let firstLast = rows[i][0] + " " + rows[i][1];
-
-                people.set(firstLast.toLowerCase(), new Object({name: firstLast, like: rows[i][2], dislike: rows[i][3], id: i}));
+                
+                people.set(firstLast.toLowerCase(), { name: firstLast, like: rows[i][2] || "", dislike: rows[i][3] || "", id: i });
 
                 console.log(people);
                 numResponse++;
