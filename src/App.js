@@ -3,22 +3,27 @@ import React from 'react';
 import './App.css';
 import { FileUploadAndRead } from './Components/FileUploadAndRead';
 import { CSVTemplateLink } from './Components/CSVTemplateLink';
-import { MakeTeamsButton } from './Components/MakeTeamsButton';
+
  
 function App() {
   return (
+    
     <div className="App">
       
       {/* Header */}
+
       <header className="bg-gray-800 text-white py-4">
         <div className="container mx-auto flex justify-between items-center px-4">
+          
           {/* Logo */}
+
           <p2 className="text-xl font-semibold">
             <img src={jimLogo} className='logo'/>
             GroupMate 
           </p2>
 
           {/* Navigation */}
+
           <nav>
             <ul className="flex space-x-4">
               <li><a href="#" className="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20 hover:text-gray-300">Make Teams!</a></li>
@@ -33,7 +38,7 @@ function App() {
       <body className = "App-body">
       <div className = "container">
         <div className = "container-left">  
-          <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>[text about how our project works here] </p>
+          <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>No CSV? Make a CSV here! </p>
           <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
         </div>
         <div class="vl"></div>
