@@ -37,9 +37,9 @@ export function pairPreferences({people,input,option}){
     }
 
     people.forEach(element => {
-        if (!contains(groups, element)) {
+        if (!groupsContain(groups, element)) {
             if (element.like != "" && element.like != null) {
-                const pref = element.like.split(',');
+                const pref = element.like.split(', ');
                 const grouped = [element];
                 pref.forEach(prefName => {
                     let person = people.get(prefName.toLowerCase());
@@ -68,38 +68,32 @@ export function pairPreferences({people,input,option}){
     return groupRandomizer(people, groups);
 }
 
-function groupRandomizer(people, groups) {
+function groupRandomizer(people, existingGroups) {
 
-    const groupGroup = groups;
+    const newGroups = existingGroups;
     
-    people.forEach(element => {
-        if (!contains(groups, element)) {
-            let position = getRandomInt(tot_groups);
+    people.forEach(person => {
+        if (!groupsContain(existingGroups, person)) {
             let placed = false;
-            let currentName = element.name.toLowerCase();
-            let currentDislike = element.dislike.toLowerCase();
     
-            for (let j = 0; j < groupGroup.length; j ++) {
-                if (position == j && groupGroup[j].length < desired_size && groupGroup[j].find((person) => currentDislike.includes(person.name.toLowerCase()) || person.dislike.toLowerCase().includes(currentName)) == null) {
-                    groupGroup[j].push(element);
-                    placed = true;
-                }
+            let randPosition = getRandomInt(tot_groups);
+            if (tryPlacingInGroup(newGroups[randPosition], person, desired_size)) {
+                placed = true;
             }
+
             if (!placed) {
-                for (let k = 0; k < groupGroup.length; k++) {
-                    if (groupGroup[k].length < desired_size && groupGroup[k].find((person) => currentDislike.includes(person.name.toLowerCase()) || person.dislike.toLowerCase().includes(currentName)) == null) {
-                        groupGroup[k].push(element);
+                for (const group of newGroups) {
+                    if (tryPlacingInGroup(group, person, desired_size)) {
                         placed = true;
                         break;
                     }
                 }
-    
-                if (!placed) {
-                    for (let j = 0; j < groupGroup.length; j++) {
-                        if (groupGroup[j].length < max_size && groupGroup[j].find((person) => currentDislike.includes(person.name.toLowerCase()) || person.dislike.toLowerCase().includes(currentName)) == null) {
-                            groupGroup[j].push(element);
-                            break;
-                        }
+            }
+
+            if (!placed) {
+                for (const group of newGroups) {
+                    if (tryPlacingInGroup(group, person, max_size)) {
+                        break;
                     }
                 }
             }
@@ -107,18 +101,38 @@ function groupRandomizer(people, groups) {
     });
     
 
-    for (let i = 0; i < groupGroup.length; i++) {
-        console.log(groupGroup[i].join());
+    for (let i = 0; i < newGroups.length; i++) {
+        console.log(newGroups[i].join());
     }
 
-    return groupGroup;
+    return newGroups;
+}
+
+// Try placing the person in the given group, respecting likes and dislikes as well as the given size limit.
+// Returns true if the person was placed in the group.
+function tryPlacingInGroup(group, person, sizeLimit) {
+    let currentName = person.name.toLowerCase();
+    let currentDislike = person.dislike.toLowerCase();
+    
+    if (group.length >= sizeLimit) {
+        return false;
+    }
+    if (group.find((otherPerson) =>
+        currentDislike.includes(otherPerson.name.toLowerCase())
+        || otherPerson.dislike.toLowerCase().includes(currentName))
+    ) {
+        return false;
+    }
+
+    group.push(person);
+    return true;
 }
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
 
-function contains(groups, target) {
+function groupsContain(groups, target) {
     let included = false;
     let i = 0;
     while (i < groups.length && !included) {
