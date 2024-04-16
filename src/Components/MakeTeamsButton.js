@@ -16,7 +16,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       }
     }
 
-    const dragItem = useRef(null); //maybe problem is here
+    const dragItem = useRef(null);
     function dragStart(e, memberID){ 
       console.log('dragStart called');
       dragItem.current = memberID;
@@ -52,6 +52,12 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       updatedGroups[targetGroupIndex].push(draggedMember);
 
       setGroups(updatedGroups);
+    }
+
+
+    const freezeItem = useRef(null);
+    function freezeStart(e, freezeID) {
+      freezeItem.current = freezeID;
     }
 
     function renderMembers(props) {
