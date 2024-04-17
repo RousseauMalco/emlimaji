@@ -13,17 +13,13 @@ function App() {
       {/* Header */}
 
       <header className="bg-gray-800 text-white py-4">
-        <div className="container mx-auto flex justify-between items-center px-4">
-          
+        <div className="container mx-auto flex justify-between items-center px-4"> 
           {/* Logo */}
-
           <p2 className="text-xl font-semibold">
             <img src={jimLogo} className='logo'/>
             GroupMate 
           </p2>
-
           {/* Navigation */}
-
           <nav>
             <ul className="flex space-x-4">
               <li><a href="#" className="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20 hover:text-gray-300">Make Teams!</a></li>

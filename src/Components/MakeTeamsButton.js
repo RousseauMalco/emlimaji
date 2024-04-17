@@ -61,8 +61,8 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
             <div class="grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
-                 <li class="ring-3 sm:rounded-xl relative px-20 pt-20 pb-20 shadow-xl ring-gray-900" key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
-                    <ul class="flex-col space-x-5" onDragOver={dragOver}
+                 <div class="ring-3 sm:rounded-xl bg-white m-2 relative px-20 pt-20 pb-20 shadow-xl ring-gray-900" key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
+                    <div class="flex-col space-x-5" onDragOver={dragOver}
                             onDrop={(e) => drop(e,groupIndex)}>
                       {
                         group.map((member) =>
@@ -75,8 +75,8 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                           </li>
                         )
                       }
-                    </ul>
-                 </li>
+                    </div>
+                 </div>
                 )
               }
             </div>
@@ -94,7 +94,6 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
      <div>
         <button class=" bg-white py-2 px-4 rounded sm:rounded-xl" id = "teamButton" onClick={handleClick} disabled={isNaN(tot_group) || tot_group === 0 || tot_group === ""}>
             Make new teams!
-
         </button> 
      
           {renderMembers({groups: groups})}

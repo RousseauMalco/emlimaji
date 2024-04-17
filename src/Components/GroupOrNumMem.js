@@ -13,7 +13,7 @@ export function MultipleChoice({ question, options, onAnswer }) {
       <h2>{question}</h2>
       <div class="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20">
           {options.map((option, index) => (
-            <li key={index}>
+            <div key={index}>
               <label>
                 <input
                   type="radio"
@@ -23,7 +23,7 @@ export function MultipleChoice({ question, options, onAnswer }) {
                 />
                 {option}
               </label>
-            </li>
+            </div>
           ))}
       </div>  
     </div>
