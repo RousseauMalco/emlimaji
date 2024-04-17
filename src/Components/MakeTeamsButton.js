@@ -32,7 +32,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       console.log('drop called');
       e.preventDefault();
       const draggedMember = dragItem.current;
-      console.log(draggedMember); //Wrong drop member
+      console.log(draggedMember); 
       const updatedGroups = [...groups];
 
       let originalGroupIndex;
@@ -56,21 +56,50 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
 
 
     const freezeItem = useRef(null);
-    function toggleFreeze(memberID) {
-      const updatedGroups = [...groups];
 
-      updatedGroups.forEach((group, index) => {
-          if (group.includes(memberID)) {
-              const memberIndex = group.indexOf(memberID);
+    function freezeStart(e,memberID)  {
+      console.log('freeze called')
+      freezeItem.current = memberID;
+      console.log(freezeItem.current)
+    }
+    function toggleFreeze(e,memberID) {
+      console.log('toggle called')
+      
+      e.preventDefault();
+      const freezeMember = freezeItem.current;
+
+      groups.forEach((group, index) => {
+          if (group.includes(freezeMember)) {
+              const memberIndex = group.indexOf(freezeMember);
               group[memberIndex] = {
                   ...group[memberIndex],
                   frozen: !group[memberIndex].frozen
               };
           }
       });
+      console.log(freezeItem.current.frozen);
+    }
 
+    function reRenderGroups() {
+      const originalGroups = [...groups];
+      const updatedGroups = pairPreferences({ people: inputNames, input: tot_group, option: option });
+  
+      updatedGroups.forEach((updatedGroup, updatedGroupIndex) => {
+          const originalGroup = originalGroups[updatedGroupIndex];
+  
+          updatedGroup.forEach((member) => {
+              const originalMember = originalGroup.find(originalMember => originalMember.id === member.id);
+              
+              if (originalMember && originalMember.frozen) {
+                  updatedGroup.splice(updatedGroup.indexOf(member), 1);
+  
+                  originalGroup.push(member);
+              }
+          });
+      });
+  
       setGroups(updatedGroups);
-  }
+    }
 
     function renderMembers(props) {
       console.log("render called")
@@ -85,10 +114,11 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                       {
                         group.map((member) =>
                           <li
+                            class="pointer-events-auto"
                             id={{member}}
                             className={`inline-block ${member.frozen ? 'frozen' : ''}`} 
                             draggable="true" 
-                            onClick={() => toggleFreeze(member)}
+                            onClick={(e) => {freezeStart(e,member);toggleFreeze(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
                           </li>
