@@ -5,6 +5,7 @@ import React, { useState, useRef } from 'react';
 
 export function MakeTeamsButton({inputNames,tot_group, option}) {
     const [groups, setGroups] = useState([]);
+    // const [isFrozen, setFreeze] = useState(false)
 
     function handleClick() {
       var button = document.getElementById("teamButton")
@@ -61,45 +62,16 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       console.log('freeze called')
       freezeItem.current = memberID;
       console.log(freezeItem.current)
-    }
-    function toggleFreeze(e,memberID) {
-      console.log('toggle called')
-      
-      e.preventDefault();
-      const freezeMember = freezeItem.current;
-
-      groups.forEach((group, index) => {
-          if (group.includes(freezeMember)) {
-              const memberIndex = group.indexOf(freezeMember);
-              group[memberIndex] = {
-                  ...group[memberIndex],
-                  frozen: !group[memberIndex].frozen
-              };
-          }
-      });
-      console.log(freezeItem.current.frozen);
+      const currentFrozenState = freezeItem.current.freeze;
+      console.log(currentFrozenState)
+      freezeItem.current = {
+        ...freezeItem.current,
+        freeze: !currentFrozenState
+      };
+      console.log(freezeItem.current.freeze);
+      console.log(freezeItem.current)
     }
 
-    function reRenderGroups() {
-      const originalGroups = [...groups];
-      const updatedGroups = pairPreferences({ people: inputNames, input: tot_group, option: option });
-  
-      updatedGroups.forEach((updatedGroup, updatedGroupIndex) => {
-          const originalGroup = originalGroups[updatedGroupIndex];
-  
-          updatedGroup.forEach((member) => {
-              const originalMember = originalGroup.find(originalMember => originalMember.id === member.id);
-              
-              if (originalMember && originalMember.frozen) {
-                  updatedGroup.splice(updatedGroup.indexOf(member), 1);
-  
-                  originalGroup.push(member);
-              }
-          });
-      });
-  
-      setGroups(updatedGroups);
-    }
 
     function renderMembers(props) {
       console.log("render called")
@@ -118,7 +90,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                             id={{member}}
                             className={`inline-block ${member.frozen ? 'frozen' : ''}`} 
                             draggable="true" 
-                            onClick={(e) => {freezeStart(e,member);toggleFreeze(e,member)}}
+                            onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
                           </li>
