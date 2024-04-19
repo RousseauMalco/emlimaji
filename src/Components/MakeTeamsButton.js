@@ -5,6 +5,7 @@ import React, { useState, useRef } from 'react';
 
 export function MakeTeamsButton({inputNames,tot_group, option}) {
     const [groups, setGroups] = useState([]);
+    // const [isFrozen, setFreeze] = useState(false)
 
     function handleClick() {
       var button = document.getElementById("teamButton")
@@ -16,7 +17,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       }
     }
 
-    const dragItem = useRef(null); //maybe problem is here
+    const dragItem = useRef(null);
     function dragStart(e, memberID){ 
       console.log('dragStart called');
       dragItem.current = memberID;
@@ -24,7 +25,6 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
     };
     
     function dragOver(e) {
-      // console.log('dragOver called');
       e.preventDefault();
     }
 
@@ -32,7 +32,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       console.log('drop called');
       e.preventDefault();
       const draggedMember = dragItem.current;
-      console.log(draggedMember); //Wrong drop member
+      console.log(draggedMember); 
       const updatedGroups = [...groups];
 
       let originalGroupIndex;
@@ -54,6 +54,24 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       setGroups(updatedGroups);
     }
 
+
+    const freezeItem = useRef(null);
+
+    function freezeStart(e,memberID)  {
+      console.log('freeze called')
+      freezeItem.current = memberID;
+      console.log(freezeItem.current)
+      const currentFrozenState = freezeItem.current.freeze;
+      console.log(currentFrozenState)
+      freezeItem.current = {
+        ...freezeItem.current,
+        freeze: !currentFrozenState
+      };
+      console.log(freezeItem.current.freeze);
+      console.log(freezeItem.current)
+    }
+
+
     function renderMembers(props) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {
@@ -65,15 +83,20 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                     <div class="flex-col space-x-5" onDragOver={dragOver}
                             onDrop={(e) => drop(e,groupIndex)}>
                       {
-                        group.map((member) =>
-                          <button
+                        group.map((member) => {
+                          const textColor = member.frozen ? 'red' : 'black';
+                          return (
+                          <button 
+                            style={{color:textColor}}
+                            class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 text-white m-2 rounded-lg font-semibold"
                             id={{member}}
-                            class="inline-block bg-sky-800 hover:bg-sky-950 px-5 text-white m-2 rounded-lg font-semibold"
-                            draggable="true"
+                            // className={`inline-block ${member.frozen ? 'frozen' : ''}`} 
+                            draggable="true" 
+                            onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
                           </button>
-                        )
+                        )})
                       }
                     </div>
                  </div>

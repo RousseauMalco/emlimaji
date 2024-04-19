@@ -36,17 +36,6 @@
 
 }
 
-.logo {
-    height: 75px;
-    width: 75px;
-    display: flex;
-    margin-right: auto;
-    object-fit: cover;
-    object-position: 25% 25%;
-    margin-left: calc((100% - (2 * 40px)) / 2);
-}
-
-
 .container {
     display: flex;
     margin-bottom: 10px;
