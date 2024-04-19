@@ -96,12 +96,10 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
                           </li>
-
-                        )
+                        )})
                       }
                     </div>
                  </div>
-
                 )
               }
             </div>
