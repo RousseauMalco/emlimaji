@@ -86,7 +86,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                         group.map((member) => {
                           const textColor = member.frozen ? 'red' : 'black';
                           return (
-                          <li 
+                          <div 
                             style={{color:textColor}}
                             class="pointer-events-auto"
                             id={{member}}
@@ -95,7 +95,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                             onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
-                          </li>
+                          </div>
                         )})
                       }
                     </div>

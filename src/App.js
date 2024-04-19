@@ -25,19 +25,10 @@ function App() {
       {/* Header */}
 
       <header className="bg-gray-800 text-white py-4">
-        <div className="container mx-auto flex justify-between items-center px-4"> 
-          {/* Logo */}
-          <p2 className="text-xl font-semibold">
-            <img src={jimLogo} className='logo'/>
-            GroupMate 
-          </p2>
-          {/* Navigation */}
-          <nav>
-            <ul className="flex space-x-4">
-              <li><a href="#" className="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20 hover:text-gray-300">Make Teams!</a></li>
-              <li><a href="#" className="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20 hover:text-gray-300">About</a></li>
-            </ul>
-          </nav>
+        <div className="container mx-auto flex items-center px-4"> 
+          <img src={jimLogo} className='mx-0 object-cover h-10 w-10'/>
+          <p2 className="text-3xl text-left m-0 font-semibold">Welcome to GroupMate </p2>
+          <button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">About</button>
         </div>
       </header>
 
