@@ -25,7 +25,6 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
     };
     
     function dragOver(e) {
-      // console.log('dragOver called');
       e.preventDefault();
     }
 
@@ -84,18 +83,21 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
                     <ul class="flex-col space-x-5" onDragOver={dragOver}
                             onDrop={(e) => drop(e,groupIndex)}>
                       {
-                        group.map((member) =>
-                          <li
+                        group.map((member) => {
+                          const textColor = member.frozen ? 'red' : 'black';
+                          return (
+                          <li 
+                            style={{color:textColor}}
                             class="pointer-events-auto"
                             id={{member}}
-                            className={`inline-block ${member.frozen ? 'frozen' : ''}`} 
+                            // className={`inline-block ${member.frozen ? 'frozen' : ''}`} 
                             draggable="true" 
                             onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
                           </li>
-                        )
-                      }
+                        );
+                        })}
                     </ul>
                  </li>
                 )
