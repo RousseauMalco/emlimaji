@@ -104,6 +104,8 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
               }
             </div>
           );
+      } else if (props.groups && props.groups.length < 1){
+
       } else {
           return(
               <p>
