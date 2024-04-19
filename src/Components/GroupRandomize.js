@@ -4,20 +4,7 @@ let desired_size = 0;
 let max_size = 0;
 
 
-// WIP: Testing for making groups with responders' desire to work with someone
 export function pairPreferences({people,input,option}){
-    
-    // names[i][1] = access the responders' chosen person they want to work with
-    // 1) pair up teams first then remove them from the list of names
-    // 2) remaining names that are not paired up are then randomized
-    // 3) 
-
-    // run a for each loop that contains the responder's name and another for each for their preference
-    // for each name : names:
-    //      for each name2 : names:
-    //          if (name2.preference == name && name.preference == name2)
-
-    // put the group creator here
     const groups = [];
     if (option==="Number of groups") {
         tot_groups = input;
@@ -69,7 +56,6 @@ export function pairPreferences({people,input,option}){
 }
 
 function groupRandomizer(people, existingGroups) {
-
     const newGroups = existingGroups;
     
     people.forEach(person => {
