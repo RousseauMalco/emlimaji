@@ -30,33 +30,50 @@ function App() {
         <div className="container mx-auto flex items-center space-x-4"> 
           <img src={jimLogo} className='mx-0 object-cover h-10 w-10'/>
           <p2 className="text-3xl text-left m-0 font-semibold">Welcome to GroupMate </p2>
-          <button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">About</button>
           <Popup trigger=
-          {<button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
+          {<button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">About</button>}
           modal nested>
                 {
                     close => (
                         <div className='modal'>
-                            <div className='content'>
-                            <h2>GroupMate CSV Instructions</h2>
-                              <p>Make a copy of the template.</p>
-                              <p>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</p>
-                              <p>Please tell your students to not misspell their name and the names of the people they put in the form.</p>
-                              <p>If you are ready to send out the form, send out the google form via link or share through email.</p>
-                              <p>Once you have the responses, go to the Responses section and press the <strong>.</strong></p>
-                              <p>Then, download the response via CSV format.</p>
-                              <p>You should have your CSV file ready to go!</p>
-                            </div>
-                            <div>
-                                <button onClick=
-                                    {() => close()}>
-                                        Close
-                                </button>
-                            </div>
-                        </div>
-                    )
-                }
-            </Popup>
+                        <div className='content'>
+                          <h2>Meet the team</h2>
+                          <div className="Emma">
+                            <img className="h-96 w-96 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                              src={'EmmaEmlimaji.jpeg'} />
+                          </div>
+                          <div>
+                            <button onClick={() => close()}>
+                              Close
+                            </button>
+                          </div>
+                          </div>
+                          </div>
+                      )}
+              </Popup>
+              <Popup trigger={<button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
+                        modal nested>
+                          {
+                            close => (
+                              <div className='modal'>
+                                <div className='content'>
+                                  <h2>GroupMate CSV Instructions</h2>
+                                  <p>Make a copy of the template.</p>
+                                  <p>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</p>
+                                  <p>Please tell your students to not misspell their name and the names of the people they put in the form.</p>
+                                  <p>If you are ready to send out the form, send out the google form via link or share through email.</p>
+                                  <p>Once you have the responses, go to the Responses section and press the <strong>.</strong></p>
+                                  <p>Then, download the response via CSV format.</p>
+                                  <p>You should have your CSV file ready to go!</p>
+                                </div>
+                                <div>
+                                  <button onClick={() => close()}>
+                                    Close
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+                        </Popup>
         </div>
       </header>
 
