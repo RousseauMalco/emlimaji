@@ -26,10 +26,11 @@ function App() {
       
       {/* Header */}
 
-      <header className="bg-gray-800 text-white py-4">
-        <div className="container mx-auto flex items-center px-4"> 
+      <header className="bg-gray-800 text-white py-3">
+        <div className="container mx-auto flex items-center space-x-4"> 
           <img src={jimLogo} className='mx-0 object-cover h-10 w-10'/>
           <p2 className="text-3xl text-left m-0 font-semibold">Welcome to GroupMate </p2>
+          <button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">About</button>
           <Popup trigger=
           {<button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
           modal nested>
