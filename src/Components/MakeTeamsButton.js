@@ -1,18 +1,68 @@
 import { pairPreferences } from "./GroupRandomize";
 import React, { useState, useRef } from 'react';
 
+let currentUpdate = 0;
 
-
-export function MakeTeamsButton({inputNames,tot_group, option}) {
+export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     const [groups, setGroups] = useState([]);
-    // const [isFrozen, setFreeze] = useState(false)
+
+    function removeNonFrozen(oldGroups) {
+      const newGroups = [];
+      for (let i = 0; i < oldGroups.length; i ++) {
+        const toKeep = [];
+        for (let k = 0; k < oldGroups[i].length; k++) {
+          let person = oldGroups[i][k];
+          if (person.freeze) {
+            toKeep.push(person);
+            if (inputNames.get(person.name.toLowerCase()) != null) {
+              inputNames.delete(person.name.toLowerCase());
+              console.log("removing" + person.name + " from input list");
+            }
+          }
+        }
+        newGroups.push(toKeep);
+      }
+
+      return newGroups;
+    }
 
     function handleClick() {
       var button = document.getElementById("teamButton")
-      console.log(inputNames);
       if (inputNames.size > 0) {
         button.innerHTML = "Reshuffle again!";
-        var teams = pairPreferences({people:inputNames,input:tot_group, option:option});
+
+        let original_groups_length = groups.length;
+        console.log("original groups length = " + groups.length);
+        let tot_groups = 0;
+        let desired_size = 0;
+        if (option==="Number of groups") {
+            tot_groups = userInput;
+            desired_size = Math.ceil(inputNames.size/tot_groups);
+        } else if (option === "Group Size") {
+            desired_size = userInput;
+            tot_groups = Math.ceil(inputNames.size/desired_size);
+        }
+        console.log("new groups length = " + tot_groups);
+        if (original_groups_length != tot_groups || currentUpdate != numUpdates) {
+          if (currentUpdate != numUpdates) {
+            currentUpdate = numUpdates;
+          }
+          let newGroups = [];
+          for (let i = 0; i < tot_groups; i++) {
+            const group = [];
+            newGroups[i] = group;
+          }
+          setGroups(newGroups);
+          console.log(groups);
+          var teams = pairPreferences({people:inputNames,input_size:desired_size, groups:newGroups});
+        } else {
+          console.log("should remove nonfrozen");
+          let newGroups = removeNonFrozen(groups);
+          console.log(newGroups);
+          setGroups(newGroups);
+          var teams = pairPreferences({people:inputNames,input_size:desired_size, groups:newGroups});
+        }
+
         setGroups(teams);
       }
     }
@@ -54,21 +104,15 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
       setGroups(updatedGroups);
     }
 
-
-    const freezeItem = useRef(null);
-
     function freezeStart(e,memberID)  {
-      console.log('freeze called')
-      freezeItem.current = memberID;
-      console.log(freezeItem.current)
-      const currentFrozenState = freezeItem.current.freeze;
-      console.log(currentFrozenState)
-      freezeItem.current = {
-        ...freezeItem.current,
-        freeze: !currentFrozenState
-      };
-      console.log(freezeItem.current.freeze);
-      console.log(freezeItem.current)
+      let frozen = memberID.freeze;
+      if (frozen) {
+        inputNames.set(memberID.name.toLowerCase(), {name: memberID.name, like: memberID.like, 
+          dislike: memberID.dislike, id: memberID.id, frozen: false});
+      }
+      memberID.freeze = !frozen;
+      console.log("Freezing = " + !frozen);
+      console.log(memberID);
     }
 
 
@@ -117,7 +161,7 @@ export function MakeTeamsButton({inputNames,tot_group, option}) {
 
     return (
      <div>
-        <button class=" bg-white py-2 px-4 rounded sm:rounded-xl" id = "teamButton" onClick={handleClick} disabled={isNaN(tot_group) || tot_group === 0 || tot_group === ""}>
+        <button class=" bg-white py-2 px-4 rounded sm:rounded-xl" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
             Make new teams!
         </button> 
      
