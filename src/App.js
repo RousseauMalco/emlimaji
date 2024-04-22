@@ -8,6 +8,7 @@ import { GroupCustomizeTextField } from './Components/GroupCustomizeTextField';
 import { MultipleChoice } from './Components/GroupOrNumMem';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import EmmaEmlimaji from './Components/EmmaEmlimaji.jpeg';
 
  
 function App() {
@@ -38,15 +39,27 @@ function App() {
           modal nested>
                 {
                     close => (
-                        <div className='modal'>
+                        <div className='modal grid grid-cols-2 gap-4'>
                         <div className='content'>
                           <h2>Meet the team</h2>
                           <div className="Emma">
                             <img className="h-96 w-96 rounded-full object-cover object-center shadow-blue-gray-900/50"
-                              src={'EmmaEmlimaji.jpeg'} />
+                              src={EmmaEmlimaji} />
+                          </div>
+                          <div className="Linh">
+                            <img className="h-96 w-96 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                              src={EmmaEmlimaji} />
+                          </div>
+                          <div className="Malcolm">
+                            <img className="h-96 w-96 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                              src={EmmaEmlimaji} />
+                          </div>
+                          <div className="Jim">
+                            <img className="h-96 w-96 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                              src={EmmaEmlimaji} />
                           </div>
                           <div>
-                            <button onClick={() => close()}>
+                            <button onClick={() => close() } className="mt-4">
                               Close
                             </button>
                           </div>
