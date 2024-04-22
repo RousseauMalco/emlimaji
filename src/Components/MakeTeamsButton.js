@@ -30,7 +30,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     function handleClick() {
       var button = document.getElementById("teamButton")
       if (inputNames.size > 0) {
-        button.innerHTML = "Reshuffle again!";
+        button.innerHTML = "Reshuffle!";
 
         let tot_groups = 0;
         let desired_size = 0;
@@ -41,9 +41,9 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
             desired_size = userInput;
             tot_groups = Math.ceil(inputNames.size/desired_size);
         }
-        console.log("currentUpdate = " + currentUpdate);
-        console.log("numUpdates = " + numUpdates);
-        if (currentUpdate != numUpdates) {
+
+        let teams = [];
+        if (currentUpdate !== numUpdates) {
           console.log("inside");
           currentUpdate = numUpdates;
           people = new Map(inputNames);
@@ -60,12 +60,12 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
             newGroups[i] = group;
           }
           setGroups(newGroups);
-          var teams = pairPreferences({people:people,input_size:desired_size, groups:newGroups});
+          teams = pairPreferences({people:people,input_size:desired_size, groups:newGroups});
         } else {
           let newGroups = removeNonFrozen(groups);
           console.log(newGroups);
           setGroups(newGroups);
-          var teams = pairPreferences({people:people,input_size:desired_size, groups:newGroups});
+          teams = pairPreferences({people:people,input_size:desired_size, groups:newGroups});
         }
 
         setGroups(teams);
@@ -125,7 +125,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {
           return (
-            <div class="grid grid-cols-2">
+            <div class="absolute grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
                  <div class="ring-3 sm:rounded-xl bg-white m-2 relative px-20 pt-20 pb-20 w-auto shadow-xl ring-gray-900 " key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
@@ -133,10 +133,10 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                             onDrop={(e) => drop(e,groupIndex)}>
                       {
                         group.map((member) => {
-                          const textColor = member.frozen ? 'red' : 'black';
+                          // const textColor = member.frozen ? 'red' : 'black';
                           return (
                           <button 
-                            style={{color:textColor}}
+                            style={{color:"white"}}
                             class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 text-white m-2 rounded-lg font-semibold"
                             id={{member}}
                             // className={`inline-block ${member.frozen ? 'frozen' : ''}`} 

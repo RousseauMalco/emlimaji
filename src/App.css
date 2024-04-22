@@ -36,19 +36,21 @@
 
 }
 
-.container {
+/* .container {
     display: flex;
     margin-bottom: 10px;
   }
 
 .container-left {
-  width: 40%; 
+  position: relative;
+  width: 35%; 
 }
 
 
 .container-right {
-  width: 60%; 
-}
+  position: relative;
+  width: 65%; 
+}  */
 
 
   img {
