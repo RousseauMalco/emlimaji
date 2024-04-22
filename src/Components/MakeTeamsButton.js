@@ -125,7 +125,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {
           return (
-            <div class="grid grid-cols-2">
+            <div class="absolute grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
                  <div class="ring-3 sm:rounded-xl bg-white m-2 relative px-20 pt-20 pb-20 w-auto shadow-xl ring-gray-900 " key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 

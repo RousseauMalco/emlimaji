@@ -9,9 +9,9 @@ export function MultipleChoice({ question, options, onAnswer }) {
   };
 
   return (
-    <div className='container'>
+    <div className='container mx-auto'>
       <h2>{question}</h2>
-      <div class="text-lg rounded-xl font-semibold text-black bg-white py-1 px-20">
+      <div class="text-md rounded-xl font-semibold text-black bg-white py-1 px-20">
           {options.map((option, index) => (
             <div key={index}>
               <label>

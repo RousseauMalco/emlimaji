@@ -66,8 +66,8 @@ function App() {
       {/* Main Part of Screen - Body */}
 
       <body className = "App-body">
-      <div className = "container">
-        <div className = "container-left">  
+      <div className = "container flex items-stretch">
+        <div className = "container">  
           <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>No CSV? Make a CSV here! </p>
           <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
           <p className="text-1xl text-gray-700 font-bold">Got your CSV? Upload it here: </p>
@@ -85,8 +85,7 @@ function App() {
                   }} />
             </div>
         </div>
-        <div class="vl"></div>
-        <div className = "container-right">
+        <div className = "container">
           <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
         </div>
       </div>
