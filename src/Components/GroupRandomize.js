@@ -1,27 +1,12 @@
-
-let tot_groups = 4;
-let desired_size = 0;
 let max_size = 0;
+let tot_groups = 0;
+let desired_size = 0;
 
-
-export function pairPreferences({people,input,option}){
-    const groups = [];
-    if (option==="Number of groups") {
-        tot_groups = input;
-        desired_size = Math.ceil(people.size/tot_groups);
-    } else if (option === "Group Size") {
-        desired_size = input;
-        tot_groups = Math.ceil(people.size/desired_size);
-    }
-
+export function pairPreferences({people,input_size,groups}){
+    desired_size = input_size;
     max_size = desired_size + 1;
-    // the teacher chooses the # of groups
-    
-
-    for (let i = 0; i < tot_groups; i++) {
-        const groupi = [];
-        groups[i] = groupi;
-    }
+    tot_groups = groups.length;
+    console.log(groups);
 
     people.forEach(element => {
         if (!groupsContain(groups, element)) {

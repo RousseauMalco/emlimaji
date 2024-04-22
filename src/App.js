@@ -12,11 +12,14 @@ import 'reactjs-popup/dist/index.css';
  
 function App() {
   const [readData, setReadData] = useState('');
-  const [tot_group, setTotGroup] = useState(4);
+  const [userInput, setUserInput] = useState(4);
   const [selectedOption, setSelectedOption] = useState("Group Size");
+  const [numUpdates, setNumUpdates] = useState(0);
+  // let numUpdates = 0;
 
   const handleRead = (value) => {
     setReadData(value);
+    setNumUpdates(numUpdates + 1);
   };
 
 
@@ -88,14 +91,20 @@ function App() {
           <FileUpload onRead={handleRead}/>
             <div class='flex flex-row m-5 mx-20'>
                 <div class='grow-0 m-1'>
-                    <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {setSelectedOption(option)}} > </MultipleChoice>  
+                    <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {
+                      setNumUpdates(numUpdates + 1);
+                      setSelectedOption(option);
+                      }} > </MultipleChoice>  
                 </div>
-                <GroupCustomizeTextField inputSize={tot_group} onSizeChange={(newTotGroup) => setTotGroup(newTotGroup)} />
+                <GroupCustomizeTextField inputSize={userInput} onSizeChange={(newUserInput) => {
+                  setNumUpdates(numUpdates + 1);
+                  setUserInput(newUserInput);
+                  }} />
             </div>
         </div>
         <div class="vl"></div>
         <div className = "container-right">
-          <MakeTeamsButton inputNames={readData} tot_group={tot_group} option ={selectedOption}/>     
+          <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
         </div>
       </div>
       </body>
