@@ -5,7 +5,7 @@ let desired_size = 0;
 export function pairPreferences({people,input_size,groups}){
     desired_size = input_size;
     max_size = desired_size + 1;
-    tot_groups = groups.length - 1;
+    tot_groups = groups.length;
     console.log(groups);
 
     people.forEach(element => {

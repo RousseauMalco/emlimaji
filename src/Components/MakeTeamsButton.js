@@ -5,6 +5,7 @@ let currentUpdate = 0;
 
 export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     const [groups, setGroups] = useState([]);
+    let people = new Map(inputNames);
 
     function removeNonFrozen(oldGroups) {
       const newGroups = [];
@@ -14,9 +15,9 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
           let person = oldGroups[i][k];
           if (person.freeze) {
             toKeep.push(person);
-            if (inputNames.get(person.name.toLowerCase()) != null) {
-              inputNames.delete(person.name.toLowerCase());
-              console.log("removing" + person.name + " from input list");
+            if (people.get(person.name.toLowerCase()) != null) {
+              people.delete(person.name.toLowerCase());
+              console.log("removing " + person.name + " from input copy");
             }
           }
         }
@@ -31,8 +32,6 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       if (inputNames.size > 0) {
         button.innerHTML = "Reshuffle again!";
 
-        let original_groups_length = groups.length;
-        console.log("original groups length = " + groups.length);
         let tot_groups = 0;
         let desired_size = 0;
         if (option==="Number of groups") {
@@ -42,25 +41,31 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
             desired_size = userInput;
             tot_groups = Math.ceil(inputNames.size/desired_size);
         }
-        console.log("new groups length = " + tot_groups);
-        if (original_groups_length != tot_groups || currentUpdate != numUpdates) {
-          if (currentUpdate != numUpdates) {
-            currentUpdate = numUpdates;
-          }
+        console.log("currentUpdate = " + currentUpdate);
+        console.log("numUpdates = " + numUpdates);
+        if (currentUpdate != numUpdates) {
+          console.log("inside");
+          currentUpdate = numUpdates;
+          people = new Map(inputNames);
           let newGroups = [];
+
+          people.forEach((person) => {
+            if (person.freeze) {
+              person.freeze = false;
+            }
+          });
+
           for (let i = 0; i < tot_groups; i++) {
             const group = [];
             newGroups[i] = group;
           }
           setGroups(newGroups);
-          console.log(groups);
-          var teams = pairPreferences({people:inputNames,input_size:desired_size, groups:newGroups});
+          var teams = pairPreferences({people:people,input_size:desired_size, groups:newGroups});
         } else {
-          console.log("should remove nonfrozen");
           let newGroups = removeNonFrozen(groups);
           console.log(newGroups);
           setGroups(newGroups);
-          var teams = pairPreferences({people:inputNames,input_size:desired_size, groups:newGroups});
+          var teams = pairPreferences({people:people,input_size:desired_size, groups:newGroups});
         }
 
         setGroups(teams);
@@ -107,7 +112,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     function freezeStart(e,memberID)  {
       let frozen = memberID.freeze;
       if (frozen) {
-        inputNames.set(memberID.name.toLowerCase(), {name: memberID.name, like: memberID.like, 
+        people.set(memberID.name.toLowerCase(), {name: memberID.name, like: memberID.like, 
           dislike: memberID.dislike, id: memberID.id, frozen: false});
       }
       memberID.freeze = !frozen;
