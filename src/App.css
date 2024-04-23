@@ -9,7 +9,7 @@
   }
 } */
 
-.App-body {
+/* .App-body {
   height: auto;
   width: auto;
   background-color: #c2e8ff;
@@ -22,9 +22,9 @@
   color: black;
   margin-top: -20px;
 
-}
+} */
 
-.title{
+/* .title{
   color: rgb(5, 5, 5);
   height: 10vw;
   font-weight: bold;
@@ -34,7 +34,7 @@
   justify-content: center;
   margin-top: -25vh;
 
-}
+} */
 
 /* .container {
     display: flex;
@@ -53,7 +53,7 @@
 }  */
 
 
-  img {
+  /* img {
     height: 200px;
     width: 225px;
     display: block;
@@ -61,7 +61,7 @@
     margin-right: auto;
     object-fit: cover;
     object-position: 25% 25%;
-  }
+  } */
 
   .vl {
     border-left: 2px solid gray;

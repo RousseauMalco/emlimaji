@@ -30,10 +30,10 @@ function App() {
       
       {/* Header */}
 
-      <header className="bg-gray-800 text-white py-3">
-        <div className="container mx-auto flex items-center space-x-4"> 
-          <img src={jimLogo} className='mx-0 object-cover h-10 w-10'/>
-          <p2 className="text-3xl text-left m-0 font-semibold">Welcome to GroupMate </p2>
+      <header className="bg-gray-800">
+        <div className="mx-auto flex max-w-5xl items-center justify-around p-1 container-md"> 
+          <img src={jimLogo} className=' object-fill h-16 w-16'/>
+          <p2 className="text-3xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
           <Popup trigger=
           {<button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">About</button>}
           modal nested>
@@ -75,7 +75,7 @@ function App() {
                             close => (
                               <div className='modal'>
                                 <div className='content'>
-                                  <h2>GroupMate CSV Instructions</h2>
+                                  <h2 class="font-semibold">GroupMate Instructions</h2>
                                   <p>Make a copy of the template.</p>
                                   <p>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</p>
                                   <p>Please tell your students to not misspell their name and the names of the people they put in the form.</p>
@@ -85,9 +85,8 @@ function App() {
                                   <p>You should have your CSV file ready to go!</p>
                                 </div>
                                 <div>
-                                  <button onClick={() => close()}>
-                                    Close
-                                  </button>
+                                  <button class="bg-[#bae6fd] rounded-x1 font-semibold py-1 px-20" onClick={() => close()}>Close </button>
+                                
                                 </div>
                               </div>
                             )}
@@ -97,10 +96,10 @@ function App() {
 
       {/* Main Part of Screen - Body */}
 
-      <body className = "App-body">
-      <div className = "container flex items-stretch">
-        <div className = "container">  
-          <p className="text-lg text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>No CSV? Make a CSV here! </p>
+      <body className = "bg-[#bae6fd]">
+      <div className = "container h-lvh flex items-stretch">
+        <div className = "container m-5">  
+          <p className="text-1xl text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>No CSV? Make a CSV here! </p>
           <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
           <p className="text-1xl text-gray-700 font-bold">Got your CSV? Upload it here: </p>
           <FileUpload onRead={handleRead}/>
@@ -117,7 +116,7 @@ function App() {
                   }} />
             </div>
         </div>
-        <div className = "container">
+        <div className = "container m-5">
           <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
         </div>
       </div>
