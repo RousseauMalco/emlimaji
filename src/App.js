@@ -75,7 +75,7 @@ function App() {
                             close => (
                               <div className='modal'>
                                 <div className='content'>
-                                  <h2 class="font-semibold">GroupMate Instructions</h2>
+                                  <h2 class="font-semibold">GroupMate Instructions</h2> 
                                   <p>Make a copy of the template.</p>
                                   <p>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</p>
                                   <p>Please tell your students to not misspell their name and the names of the people they put in the form.</p>
@@ -96,27 +96,29 @@ function App() {
 
       {/* Main Part of Screen - Body */}
 
-      <body className = "bg-[#bae6fd]">
-      <div className = "container h-lvh flex items-stretch">
-        <div className = "container m-5">  
-          <p className="text-1xl text-gray-700 font-bold" style={{ whiteSpace: 'pre-wrap' }}>No CSV? Make a CSV here! </p>
-          <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
-          <p className="text-1xl text-gray-700 font-bold">Got your CSV? Upload it here: </p>
-          <FileUpload onRead={handleRead}/>
-            <div class='flex flex-row m-5 mx-20'>
-                <div class='grow-0 m-1'>
-                    <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {
-                      setNumUpdates(numUpdates + 1);
-                      setSelectedOption(option);
-                      }} > </MultipleChoice>  
-                </div>
-                <GroupCustomizeTextField inputSize={userInput} onSizeChange={(newUserInput) => {
-                  setNumUpdates(numUpdates + 1);
-                  setUserInput(newUserInput);
-                  }} />
+      <body className = "overflow-auto min-h-full bg-[#bae6fd]">
+      <div className = "container mx-auto my-auto flex align-baseline">
+        <div className = "container realtive w-40% m-5">  
+          <p className="text-2xl text-gray-700 font-bold">Got your responses? Upload your CSV here: </p>
+            <FileUpload onRead={handleRead}/>
+          <div class='flex flex-row m-5 mx-20'>
+              <div class='grow-0 m-1'>
+                  <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {
+                    setNumUpdates(numUpdates + 1);
+                    setSelectedOption(option);
+                    }} > </MultipleChoice>  
+              </div>
+              <GroupCustomizeTextField inputSize={userInput} onSizeChange={(newUserInput) => {
+                setNumUpdates(numUpdates + 1);
+                setUserInput(newUserInput);
+                }} />
+            </div>
+            <div class="mt-56">
+              <p className="text-2xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
+              <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
             </div>
         </div>
-        <div className = "container m-5">
+        <div className = "container w-60% m-5">
           <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
         </div>
       </div>
