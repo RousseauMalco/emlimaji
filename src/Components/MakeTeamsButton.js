@@ -120,6 +120,9 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       console.log(memberID);
     }
 
+    // function handleFreezeClick(e,textColor) {
+    //   e.target.style.color = textColor;
+    // }
 
     function renderMembers(props) {
       console.log("render called")
@@ -133,13 +136,12 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                             onDrop={(e) => drop(e,groupIndex)}>
                       {
                         group.map((member) => {
-                          // const textColor = member.frozen ? 'red' : 'black';
+                          // const textColor = member.freeze ? 'red' : 'white';
                           return (
                           <button 
-                            style={{color:"white"}}
+                            // style={{color:textColor}}
                             class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 py-1 text-white m-2 rounded-lg font-semibold"
                             id={{member}}
-                            // className={`inline-block ${member.frozen ? 'frozen' : ''}`} 
                             draggable="true" 
                             onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
