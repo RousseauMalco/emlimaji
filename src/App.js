@@ -76,17 +76,18 @@ function App() {
                               <div className='modal'>
                                 <div className='content'>
                                   <h2 class="font-semibold">GroupMate Instructions</h2> 
-                                  <p>Make a copy of the template.</p>
-                                  <p>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</p>
-                                  <p>Please tell your students to not misspell their name and the names of the people they put in the form.</p>
-                                  <p>If you are ready to send out the form, send out the google form via link or share through email.</p>
-                                  <p>Once you have the responses, go to the Responses section and press the <strong>.</strong></p>
-                                  <p>Then, download the response via CSV format.</p>
-                                  <p>You should have your CSV file ready to go!</p>
+                                <ol class="m-5">
+                                  <li>Make a copy of the template.</li>
+                                  <li>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</li>
+                                  <li>Please tell your students to not misspell their name and the names of the people they put in the form.</li>
+                                  <li>If you are ready to send out the form, send out the google form via link or share through email.</li>
+                                  <li>Once you have the responses, go to the Responses section and press the <strong>.</strong></li>
+                                  <li>Then, download the response via CSV format.</li>
+                                  <li>You should have your CSV file ready to go!</li> 
+                                </ol>
                                 </div>
                                 <div>
                                   <button class="bg-[#bae6fd] rounded-x1 font-semibold py-1 px-20" onClick={() => close()}>Close </button>
-                                
                                 </div>
                               </div>
                             )}
@@ -113,7 +114,7 @@ function App() {
                 setUserInput(newUserInput);
                 }} />
             </div>
-            <div class="mt-56">
+            <div class="mt-60">
               <p className="text-2xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
               <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
             </div>
