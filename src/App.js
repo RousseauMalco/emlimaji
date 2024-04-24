@@ -9,6 +9,8 @@ import { MultipleChoice } from './Components/GroupOrNumMem';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import EmmaEmlimaji from './Components/EmmaEmlimaji.png';
+import { Typography } from "@material-tailwind/react";
+import Linh from './Components/Linh.png';
 
  
 function App() {
@@ -46,10 +48,16 @@ function App() {
                                 <img src={EmmaEmlimaji} 
                                 className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   />
+                                  <Typography as="caption" variant="small" className="mt-2 text-center font-normal">
+                                    Emma
+                                  </Typography>
                               </div>
                               <div className="Linh">
                                 <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
-                                  src={EmmaEmlimaji} />
+                                  src={Linh} />
+                                <Typography as="caption" variant="small" className="mt-2 text-center font-normal">
+                                    Linh
+                                </Typography>
                               </div>
                               <div className="Malcolm">
                                 <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
