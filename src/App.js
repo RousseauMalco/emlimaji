@@ -37,7 +37,7 @@ function App() {
           <img src={jimLogo} className=' object-fill h-16 w-16'/>
           <p2 className="text-3xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
           <Popup trigger=
-          {<button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">About</button>}
+          {<button class="text-lg rounded-xl space-x-1 font-semibold  hover:bg-gray-200 text-black bg-white py-1 px-20">About</button>}
           modal nested>
                 {
                     close => (
@@ -69,7 +69,7 @@ function App() {
                               </div>
                               </div>
                             <div>
-                            <button onClick={() => close() } className="mt-4">
+                            <button onClick={() => close() } className="bg-gray-500 hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-20 shadow-lg mt-4">
                               Close
                             </button>
                           
@@ -77,7 +77,7 @@ function App() {
                           </div>
                       )}
               </Popup>
-              <Popup trigger={<button class="text-lg rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
+              <Popup trigger={<button class="text-lg  hover:bg-gray-200 rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
                         modal nested>
                           {
                             close => (
@@ -95,7 +95,7 @@ function App() {
                                 </ol>
                                 </div>
                                 <div>
-                                  <button class="bg-[#bae6fd] rounded-x1 font-semibold py-1 px-20" onClick={() => close()}>Close </button>
+                                  <button class="bg-gray-500 hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-20 shadow-lg" onClick={() => close()}>Close </button>
                                 </div>
                               </div>
                             )}

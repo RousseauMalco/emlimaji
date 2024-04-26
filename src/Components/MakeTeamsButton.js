@@ -168,7 +168,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
 
     return (
      <div>
-        <button class="bg-white py-2 h-10 px-5 font-semibold border border-gray-400 rounded sm:rounded-xl" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
+        <button class="bg-white py-2 h-10 px-5 font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-lg" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
             Make new teams!
         </button> 
      
