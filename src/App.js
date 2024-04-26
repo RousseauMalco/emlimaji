@@ -105,7 +105,7 @@ function App() {
 
       {/* Main Part of Screen - Body */}
 
-      <body className = "overflow-auto min-h-full bg-[#bae6fd]">
+      <body className = "overflow-auto min-h-full aspect-auto bg-[#bae6fd]">
       <div className = "container mx-auto my-auto flex align-baseline">
         <div className = "container realtive w-40% m-5">  
           <p className="text-2xl text-gray-700 font-bold">Got your responses? Upload your CSV here: </p>
