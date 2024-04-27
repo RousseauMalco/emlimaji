@@ -1,6 +1,9 @@
 import { input } from "@material-tailwind/react";
 import { pairPreferences } from "./GroupRandomize";
 import React, { useState, useRef } from 'react';
+import { BsPinAngle } from "react-icons/bs";
+import { BsPinAngleFill } from "react-icons/bs";
+
 
 let currentUpdate = 0;
 
@@ -133,16 +136,19 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {
           return (
-            <div class="abolsolute grid grid-cols-2">
+            <div class="absolute grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
-                 <div class="sm:rounded-lg bg-white m-2 relative px-10 pt-7 pb-7 w-auto shadow-xl ring-gray-900 " key={groupIndex} id={`group-${groupIndex}`} onDragOver={(e) => dragOver(e)}> 
-                    <div class="flex-col space-x-5" onDragOver={dragOver}
-                            onDrop={(e) => drop(e,groupIndex)}>
+                 <div class="sm:rounded-lg bg-white m-2 relative px-10 pt-7 pb-7 w-auto shadow-xl ring-gray-900 " 
+                    key={groupIndex} 
+                    id={`group-${groupIndex}`} 
+                    onDragOver={(e) => dragOver(e)} 
+                    onDrop={(e) => drop(e,groupIndex)}> 
                       {
                         group.map((member) => {
                           // const textColor = member.freeze ? 'red' : 'white';
                           return (
+                            
                           <button 
                             // style={{color:textColor}}
                             class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 py-1 text-white m-2 rounded-lg font-semibold"
@@ -151,10 +157,14 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                             onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
+                            <BsPinAngle 
+                              class="inline-block mr-1 ml-2" 
+                              />
                           </button>
+                          
                         )})
                       }
-                    </div>
+
                  </div>
                 )
               }
