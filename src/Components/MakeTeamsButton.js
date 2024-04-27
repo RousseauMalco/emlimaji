@@ -1,3 +1,4 @@
+import { input } from "@material-tailwind/react";
 import { pairPreferences } from "./GroupRandomize";
 import React, { useState, useRef } from 'react';
 
@@ -40,6 +41,10 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
         } else if (option === "Group Size") {
             desired_size = userInput;
             tot_groups = Math.ceil(inputNames.size/desired_size);
+        }
+
+        if (tot_groups > inputNames.size) {
+          tot_groups = inputNames.size;
         }
 
         let teams = [];

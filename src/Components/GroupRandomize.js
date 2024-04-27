@@ -1,37 +1,65 @@
-let max_size = 0;
 let tot_groups = 0;
 let desired_size = 0;
 
 export function pairPreferences({people,input_size,groups}){
-    desired_size = input_size;
-    max_size = desired_size + 1;
+    desired_size = Number(input_size);
+    let max_size = desired_size + 1;
+    // console.log("initial max size = " + (max_size));
     tot_groups = groups.length;
-    console.log(groups);
+    // console.log(groups);
 
     people.forEach(element => {
         if (!groupsContain(groups, element)) {
-            if (element.like != "" && element.like != null) {
+            if (element.like !== "" && element.like != null) {
                 const pref = element.like.split(', ');
-                const grouped = [element];
+                let grouped = [element];
                 pref.forEach(prefName => {
                     let person = people.get(prefName.toLowerCase());
-                    if (person != null && person.like.toLowerCase().includes(element.name.toLowerCase()) && grouped.length < max_size) {
+                    if (person != null && person.like.toLowerCase().includes(element.name.toLowerCase()) && 
+                    person.name.toLowerCase() !== element.name.toLowerCase() && 
+                    person.dislike.toLowerCase() !== element.name.toLowerCase()) {
                         grouped.push(person);
+                        console.log(element.name + " grouped with " + person.name);
                     }
                 });
         
-                let placed = false;
                 let counter = 0;
-                while (!placed) {
-                    let position = getRandomInt(tot_groups);
-                    if (groups[position].length < max_size && groups[position].length + grouped.length < max_size) {
-                        grouped.forEach(element => groups[position].push(element));
-                        placed = true;
+                grouped = grouped.reverse();
+                while (grouped.length > 0) {
+
+                    let placementGroup;
+                    let position = 0;
+                    for (let i = 0; i < groups.length; i++) {
+                        position = getRandomInt(tot_groups);
+                        if(groups[position].length < 1) {
+                            placementGroup = groups[position];
+                        }
+                    }
+
+                    if (placementGroup == null) {
+                        position = getRandomInt(tot_groups);
+                        placementGroup = groups[position];
+                    }
+
+                    if (placementGroup.length < max_size) {
+                        let length = grouped.length;
+                        for (let i = 0; i < length; i++) {
+
+                            console.log("desired size: " + desired_size);
+                            console.log("max size: " + max_size);
+                            console.log("length " + (groups[position].length + 1));
+
+                            if ((placementGroup.length + 1) < max_size) {
+                                placementGroup.push(grouped.pop());
+                            }                       
+                        }
                     }
                     counter++;
                     if (counter > tot_groups) {
                         break;
                     }
+
+                    console.log("failed to place together");
                 }
             }
         }
@@ -63,7 +91,7 @@ function groupRandomizer(people, existingGroups) {
 
             if (!placed) {
                 for (const group of newGroups) {
-                    if (tryPlacingInGroup(group, person, max_size)) {
+                    if (tryPlacingInGroup(group, person, desired_size)) {
                         break;
                     }
                 }
@@ -109,6 +137,7 @@ function groupsContain(groups, target) {
     while (i < groups.length && !included) {
         if (groups[i].includes(target)) {
             included = true;
+            console.log("already included");
             break;
         }
         i++;
