@@ -106,9 +106,9 @@ function App() {
 
       {/* Main Part of Screen - Body */}
 
-      <body className = "overflow-auto min-h-full aspect-auto bg-[#bae6fd]">
-      <div className = "container mx-auto my-auto flex align-baseline">
-        <div className = "container realtive w-40% m-5">  
+      <body className = "overflow-auto min-h-full bg-[#bae6fd]">
+      <div className = "container mx-auto my-auto h-lvh flex align-baseline">
+        <div className = "container realtive w-40% mt-5">  
           <p className="text-2xl text-gray-700 font-bold">Got your responses? Upload your CSV here: </p>
             <FileUpload onRead={handleRead}/>
           <div class='flex flex-row m-5 mx-20'>
