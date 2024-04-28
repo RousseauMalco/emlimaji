@@ -52,7 +52,6 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
 
         let teams = [];
         if (currentUpdate !== numUpdates) {
-          console.log("inside");
           currentUpdate = numUpdates;
           people = new Map(inputNames);
           let newGroups = [];
@@ -113,6 +112,13 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
 
       updatedGroups[targetGroupIndex] = updatedGroups[targetGroupIndex] || [];
       updatedGroups[targetGroupIndex].push(draggedMember);
+
+      updatedGroups[targetGroupIndex].forEach((person) => {
+        if (person.dislike.toLowerCase().includes(draggedMember.name.toLowerCase()) || 
+        draggedMember.dislike.toLowerCase().includes(draggedMember.name.toLowerCase())) {
+          console.log("Preference conflict!");
+        }
+      });
 
       setGroups(updatedGroups);
     }

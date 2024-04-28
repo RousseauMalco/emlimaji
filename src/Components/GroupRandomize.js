@@ -19,7 +19,7 @@ export function pairPreferences({people,input_size,groups}){
                     person.name.toLowerCase() !== element.name.toLowerCase() && 
                     person.dislike.toLowerCase() !== element.name.toLowerCase()) {
                         grouped.push(person);
-                        console.log(element.name + " grouped with " + person.name);
+                        // console.log(element.name + " grouped with " + person.name);
                     }
                 });
         
@@ -45,9 +45,9 @@ export function pairPreferences({people,input_size,groups}){
                         let length = grouped.length;
                         for (let i = 0; i < length; i++) {
 
-                            console.log("desired size: " + desired_size);
-                            console.log("max size: " + max_size);
-                            console.log("length " + (groups[position].length + 1));
+                            // console.log("desired size: " + desired_size);
+                            // console.log("max size: " + max_size);
+                            // console.log("length " + (groups[position].length + 1));
 
                             if ((placementGroup.length + 1) < max_size) {
                                 placementGroup.push(grouped.pop());
@@ -59,7 +59,7 @@ export function pairPreferences({people,input_size,groups}){
                         break;
                     }
 
-                    console.log("failed to place together");
+                    // console.log("failed to place together");
                 }
             }
         }
@@ -100,9 +100,9 @@ function groupRandomizer(people, existingGroups) {
     });
     
 
-    for (let i = 0; i < newGroups.length; i++) {
-        console.log(newGroups[i].join());
-    }
+    // for (let i = 0; i < newGroups.length; i++) {
+    //     console.log(newGroups[i].join());
+    // }
 
     return newGroups;
 }
@@ -137,7 +137,7 @@ function groupsContain(groups, target) {
     while (i < groups.length && !included) {
         if (groups[i].includes(target)) {
             included = true;
-            console.log("already included");
+            // console.log("already included");
             break;
         }
         i++;

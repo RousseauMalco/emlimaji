@@ -3,7 +3,6 @@ export function csvRead(csv) {
     let file = csv;
 
     var rows;
-    var numResponse = 0;
     const people = new Map();
 
     papaparse.parse(file, {
@@ -22,7 +21,6 @@ export function csvRead(csv) {
                 people.set(firstLast.toLowerCase(), { name: firstLast, like: rows[i][2] || "", dislike: rows[i][3] || "", id: i, freeze: false });
 
                 console.log(people);
-                numResponse++;
             }
         }
     });
