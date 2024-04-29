@@ -1,11 +1,26 @@
 import { input } from "@material-tailwind/react";
 import { pairPreferences } from "./GroupRandomize";
 import React, { useState, useRef } from 'react';
-import { BsPinAngle } from "react-icons/bs";
-import { BsPinAngleFill } from "react-icons/bs";
+import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
 
 
 let currentUpdate = 0;
+
+const IconWithStatusButton = () => {
+  const [status, setStatus] = useState('success');
+
+  const toggleStatus = () => {
+    setStatus(prevStatus => (prevStatus === 'success' ? 'failure' : 'success'));
+  };
+
+  const icon = status === 'success' ? <BsPinAngle color="green" size={24} /> : <BsPinAngleFill color="red" size={24} />;
+
+  return (
+    <button onClick={toggleStatus} className="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 py-1 text-white m-2 rounded-lg font-semibold">
+      {icon}
+    </button>
+  );
+};
 
 export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     const [groups, setGroups] = useState([]);
@@ -154,7 +169,6 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                         group.map((member) => {
                           // const textColor = member.freeze ? 'red' : 'white';
                           return (
-                            
                           <button 
                             // style={{color:textColor}}
                             class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 py-1 text-white m-2 rounded-lg font-semibold"
@@ -163,9 +177,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                             onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
                             {member.name}
-                            <BsPinAngle 
-                              class="inline-block mr-1 ml-2" 
-                              />
+                            <IconWithStatusButton  />
                           </button>
                           
                         )})
