@@ -38,7 +38,7 @@ function App() {
           <img src={jimLogo} className=' object-fill h-16 w-16'/>
           <p2 className="text-3xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
           <Popup trigger=
-          {<button class="text-lg rounded-xl space-x-1 font-semibold  hover:bg-gray-200 text-black bg-white py-1 px-20">About</button>}
+          {<button class="text-lg rounded-xl space-x-1 font-semibold hover:bg-gray-200 text-black bg-white py-1 px-20">About</button>}
           modal nested>
                 {
                     close => (
@@ -83,18 +83,18 @@ function App() {
                           {
                             close => (
                               <div className='modal'>
-                                <div className='content'>
-                                  <h2 class="font-semibold">GroupMate Instructions</h2> 
-                                <ol class="m-5">
-                                  <li>Make a copy of the template.</li>
-                                  <li>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</li>
-                                  <li>Please tell your students to not misspell their name and the names of the people they put in the form.</li>
-                                  <li>If you are ready to send out the form, send out the google form via link or share through email.</li>
-                                  <li>Once you have the responses, go to the Responses section and press the <strong>.</strong></li>
-                                  <li>Then, download the response via CSV format.</li>
-                                  <li>You should have your CSV file ready to go!</li> 
-                                </ol>
-                                </div>
+                                
+                                  <h1 class="font-semibold">GroupMate Instructions</h1> 
+                                  <ol class="m-5">
+                                      <li>Make a copy of the template.</li>
+                                      <li>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</li>
+                                      <li>Please tell your students to not misspell their name and the names of the people they put in the form.</li>
+                                      <li>If you are ready to send out the form, send out the google form via link or share through email.</li>
+                                      <li>Once you have the responses, go to the Responses section and press the <strong>.</strong></li>
+                                      <li>Then, download the response via CSV format.</li>
+                                      <li>You should have your CSV file ready to go!</li> 
+                                  </ol>
+                               
                                 <div>
                                   <button class="bg-gray-500 hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-20 shadow-lg" onClick={() => close()}>Close </button>
                                 </div>
@@ -106,12 +106,12 @@ function App() {
 
       {/* Main Part of Screen - Body */}
 
-      <body className = "overflow-auto min-h-full bg-[#bae6fd]">
-      <div className = "container mx-auto my-auto h-lvh flex align-baseline">
-        <div className = "container realtive w-40% mt-5">  
-          <p className="text-2xl text-gray-700 font-bold">Got your responses? Upload your CSV here: </p>
+      <body className = "bg-[#bae6fd]">
+      <div className = "container flex h-lvh items-stretch align-baseline">
+        <div className = "container realtive w-2/5 mt-5">  
+          <p className="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
             <FileUpload onRead={handleRead}/>
-          <div class='flex flex-row m-5 mx-20'>
+          <div class='flex flex-row mt-5 mx-10'>
               <div class='grow-0 m-1'>
                   <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {
                     setNumUpdates(numUpdates + 1);
@@ -124,11 +124,11 @@ function App() {
                 }} />
             </div>
             <div class="mt-60">
-              <p className="text-2xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
+              <p className="text-xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
               <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
             </div>
         </div>
-        <div className = "container w-60% m-5">
+        <div className = "container w-3/5 m-5">
           <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
         </div>
       </div>
