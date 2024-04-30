@@ -96,7 +96,7 @@ function App() {
                                   </ol>
                                
                                 <div>
-                                  <button class="bg-gray-500 hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-20 shadow-lg" onClick={() => close()}>Close </button>
+                                  <button class="bg-[#0ea5e9] hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-20 shadow-lg" onClick={() => close()}>Close </button>
                                 </div>
                               </div>
                             )}
@@ -106,9 +106,9 @@ function App() {
 
       {/* Main Part of Screen - Body */}
 
-      <body className = "bg-[#bae6fd]">
-      <div className = "container flex h-lvh items-stretch align-baseline">
-        <div className = "container realtive w-2/5 mt-5">  
+      <body className="bg-[#bae6fd] min-h-screen">
+      <div className="container flex items-stretch align-baseline">
+        <div className="container realtive w-2/5 mt-5">  
           <p className="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
             <FileUpload onRead={handleRead}/>
           <div class='flex flex-row mt-5 mx-10'>

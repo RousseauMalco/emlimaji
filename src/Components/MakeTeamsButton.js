@@ -157,7 +157,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {
           return (
-            <div class="absolute grid grid-cols-2">
+            <div class="grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
                  <div class="sm:rounded-lg bg-white m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 " 
@@ -201,7 +201,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
 
     return (
      <div>
-        <button class="bg-white py-4 h-12 px-7 w-autd font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-lg" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
+        <button class="bg-white h-12 px-7 w-autd font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-lg" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
             Make new teams!
         </button> 
      
