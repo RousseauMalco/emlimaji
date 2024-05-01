@@ -13,10 +13,10 @@ const IconWithStatusButton = () => {
     setStatus(prevStatus => (prevStatus === 'success' ? 'failure' : 'success'));
   };
 
-  const icon = status === 'success' ? <BsPinAngle color="green" size={24} /> : <BsPinAngleFill color="red" size={24} />;
+  const icon = status === 'success' ? <BsPinAngle color="hsla(0, 0%, 70%, 0.5)" size={20} /> : <BsPinAngleFill color="e0f2fe" size={20} />;
 
   return (
-    <button onClick={toggleStatus} className="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 py-1 text-white m-2 rounded-lg font-semibold">
+    <button onClick={toggleStatus} className="pointer-events-auto inline-block px-1 py-1 text-white ml-7 m-1 rounded-lg font-semibold">
       {icon}
     </button>
   );
@@ -160,7 +160,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
             <div class="grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
-                 <div class="sm:rounded-lg bg-white m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 " 
+                 <div class="sm:rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 " 
                     key={groupIndex} 
                     id={`group-${groupIndex}`} 
                     onDragOver={(e) => dragOver(e)} 
@@ -201,7 +201,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
 
     return (
      <div>
-        <button class="bg-white h-12 px-7 w-autd font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-lg" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
+        <button class="bg-white h-12 px-20 w-autd font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-md" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
             Make new teams!
         </button> 
      

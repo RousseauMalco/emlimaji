@@ -43,7 +43,7 @@ function App() {
                 {
                     close => (
                         <div className='modal'>
-                            <h2 className='py-5 content-center'>Meet the team</h2>
+                            <h2 className='font-semibold text-xl text-center mb-4'>Meet the team!</h2>
                             <div className='content grid grid-cols-4 gap-4'>
                               <div className="Emma">
                                 <img src={EmmaEmlimaji} 
@@ -70,7 +70,7 @@ function App() {
                               </div>
                               </div>
                             <div>
-                            <button onClick={() => close() } className="bg-gray-500 hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-20 shadow-lg mt-4">
+                            <button onClick={() => close() } className="bg-[#0c4a6e] outline outline-1 outline-slate-100 hover:bg-gray-400 rounded-2x1 text-white font-semibold py-1 px-10 shadow-lg mt-4">
                               Close
                             </button>
                           
@@ -82,10 +82,9 @@ function App() {
                         modal nested>
                           {
                             close => (
-                              <div className='modal'>
-                                
-                                  <h1 class="font-semibold">GroupMate Instructions</h1> 
-                                  <ol class="m-5">
+                              <div className='modal'> 
+                                  <h1 class="font-semibold text-xl text-center">GroupMate Instructions</h1> 
+                                  <ol class="ps-5 mt-2 space-y-1 list-decimal list-inside mb-5">
                                       <li>Make a copy of the template.</li>
                                       <li>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</li>
                                       <li>Please tell your students to not misspell their name and the names of the people they put in the form.</li>
@@ -94,9 +93,8 @@ function App() {
                                       <li>Then, download the response via CSV format.</li>
                                       <li>You should have your CSV file ready to go!</li> 
                                   </ol>
-                               
                                 <div>
-                                  <button class="bg-[#0ea5e9] hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-20 shadow-lg" onClick={() => close()}>Close </button>
+                                  <button class="bg-[#0c4a6e] text-white outline outline-1 outline-slate-100 hover:bg-gray-400 rounded-2x1 font-semibold py-1 px-10 shadow-lg" onClick={() => close()}>Close </button>
                                 </div>
                               </div>
                             )}
@@ -108,7 +106,7 @@ function App() {
 
       <body className="bg-[#bae6fd] min-h-screen">
       <div className="container flex items-stretch align-baseline">
-        <div className="container realtive w-2/5 mt-5">  
+        <div className="container realtive items-center w-2/5 mt-5">  
           <p className="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
             <FileUpload onRead={handleRead}/>
           <div class='flex flex-row mt-5 mx-10'>
