@@ -2,6 +2,7 @@ import { input } from "@material-tailwind/react";
 import { pairPreferences } from "./GroupRandomize";
 import React, { useState, useRef } from 'react';
 import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
+import { LuGripVertical } from "react-icons/lu";
 
 
 let currentUpdate = 0;
@@ -149,10 +150,6 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       console.log(memberID);
     }
 
-    // function handleFreezeClick(e,textColor) {
-    //   e.target.style.color = textColor;
-    // }
-
     function renderMembers(props) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {
@@ -171,11 +168,12 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                           return (
                           <button 
                             // style={{color:textColor}}
-                            class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-5 py-1 text-white m-2 rounded-lg font-semibold"
+                            class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg font-semibold"
                             id={{member}}
                             draggable="true" 
                             onClick={(e) => {freezeStart(e,member)}}
                             onDragStart={(e) => dragStart(e,member)}>
+                            <LuGripVertical color="808080" size={30} className="pointer-events-auto px-1 inline-block text-white rounded-lg font-semibold" />
                             {member.name}
                             <IconWithStatusButton  />
                           </button>
