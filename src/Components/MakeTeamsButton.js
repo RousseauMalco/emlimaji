@@ -7,14 +7,15 @@ import { LuGripVertical } from "react-icons/lu";
 
 let currentUpdate = 0;
 
-const IconWithStatusButton = () => {
-  const [status, setStatus] = useState('success');
+const IconWithStatusButton = ({ freeze, freezeChange }) => {
 
   const toggleStatus = () => {
-    setStatus(prevStatus => (prevStatus === 'success' ? 'failure' : 'success'));
+    freezeChange(!freeze);
   };
 
-  const icon = status === 'success' ? <BsPinAngle color="hsla(0, 0%, 70%, 0.5)" size={20} /> : <BsPinAngleFill color="e0f2fe" size={20} />;
+  const icon = freeze
+    ? <BsPinAngleFill color="e0f2fe" size={20} />
+    : <BsPinAngle color="hsla(0, 0%, 70%, 0.5)" size={20} />;
 
   return (
     <button onClick={toggleStatus} className="pointer-events-auto inline-block px-1 py-1 text-white ml-7 m-1 rounded-lg font-semibold">
@@ -139,15 +140,9 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       setGroups(updatedGroups);
     }
 
-    function freezeStart(e,memberID)  {
-      let frozen = memberID.freeze;
-      if (frozen) {
-        people.set(memberID.name.toLowerCase(), {name: memberID.name, like: memberID.like, 
-          dislike: memberID.dislike, id: memberID.id, frozen: false});
-      }
-      memberID.freeze = !frozen;
-      console.log("Freezing = " + !frozen);
-      console.log(memberID);
+    function setFreeze(member, newValue) {
+      member.freeze = newValue;
+      setGroups([...groups]);
     }
 
     function renderMembers(props) {
@@ -166,17 +161,16 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                         group.map((member) => {
                           // const textColor = member.freeze ? 'red' : 'white';
                           return (
-                          <button 
-                            // style={{color:textColor}}
-                            class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg font-semibold"
-                            id={{member}}
-                            draggable="true" 
-                            onClick={(e) => {freezeStart(e,member)}}
-                            onDragStart={(e) => dragStart(e,member)}>
-                            <LuGripVertical color="808080" size={30} className="pointer-events-auto px-1 inline-block text-white rounded-lg font-semibold" />
-                            {member.name}
-                            <IconWithStatusButton  />
-                          </button>
+                            <button 
+                              // style={{color:textColor}}
+                              class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg font-semibold"
+                              id={{member}}
+                              draggable="true" 
+                              onDragStart={(e) => dragStart(e,member)}>
+                              <LuGripVertical color="808080" size={30} className="pointer-events-auto px-1 inline-block text-white rounded-lg font-semibold" />
+                              {member.name}
+                              <IconWithStatusButton freeze={member.freeze} freezeChange={(newValue) => setFreeze(member, newValue)} />
+                            </button>
                           
                         )})
                       }
