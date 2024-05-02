@@ -2,6 +2,7 @@ import { input } from "@material-tailwind/react";
 import { pairPreferences } from "./GroupRandomize";
 import React, { useState, useRef } from 'react';
 import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
+import Popup from 'reactjs-popup';
 import { LuGripVertical } from "react-icons/lu";
 
 
@@ -133,7 +134,12 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       updatedGroups[targetGroupIndex].forEach((person) => {
         if (person.dislike.toLowerCase().includes(draggedMember.name.toLowerCase()) || 
         draggedMember.dislike.toLowerCase().includes(draggedMember.name.toLowerCase())) {
-          console.log("Preference conflict!");
+          <Popup trigger={draggedMember.dislike.toLowerCase().includes(draggedMember.name.toLowerCase())}
+                        modal nested>
+                        <p>
+                          You have made a group with 2 people don't like each other.
+                        </p>
+                        </Popup>
         }
       });
 

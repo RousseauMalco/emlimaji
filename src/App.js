@@ -1,5 +1,5 @@
 import jimLogo from './Components/jimLogo.png';
-import './App.css';
+// import './App.css';
 import { CSVTemplateLink } from './Components/CSVTemplateLink';
 import React, { useState } from 'react';
 import { FileUpload } from './Components/FileUpload';
@@ -11,8 +11,6 @@ import 'reactjs-popup/dist/index.css';
 import EmmaEmlimaji from './Components/EmmaEmlimaji.png';
 import { Typography } from "@material-tailwind/react";
 import Linh from './Components/Linh.png';
-
-
  
 function App() {
   const [readData, setReadData] = useState('');
@@ -26,7 +24,6 @@ function App() {
     setNumUpdates(numUpdates + 1);
   };
 
-
   return (
     
     <div className="App">
@@ -34,7 +31,7 @@ function App() {
       {/* Header */}
 
       <header className="bg-gray-800">
-        <div className="mx-auto flex max-w-5xl items-center justify-around p-1 container-md"> 
+        <div className="mx-auto flex md:flex-cols max-w-5xl items-center justify-around p-1 container-md"> 
           <img src={jimLogo} className=' object-fill h-16 w-16'/>
           <p2 className="text-3xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
           <Popup trigger=
@@ -78,7 +75,7 @@ function App() {
                           </div>
                       )}
               </Popup>
-              <Popup trigger={<button class="text-lg  hover:bg-gray-200 rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
+              <Popup trigger={<button class="text-lg hover:bg-gray-200 rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
                         modal nested>
                           {
                             close => (
@@ -105,7 +102,7 @@ function App() {
       {/* Main Part of Screen - Body */}
 
       <body className="bg-[#bae6fd] min-h-screen">
-      <div className="container flex items-stretch align-baseline">
+      <div className="container flex flex-rows items-stretch align-baseline">
         <div className="container realtive items-center w-2/5 mt-5">  
           <p className="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
             <FileUpload onRead={handleRead}/>
