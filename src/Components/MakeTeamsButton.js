@@ -8,6 +8,7 @@ import { LuGripVertical } from "react-icons/lu";
 
 let currentUpdate = 0;
 
+// Controls the pin indicator on each name.
 const IconWithStatusButton = ({ freeze, freezeChange }) => {
 
   const toggleStatus = () => {
@@ -30,6 +31,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     const [groups, setGroups] = useState([]);
     let people = new Map(inputNames);
 
+    // Removes non-frozen people from the groups in preparation for placing them randomly again.
     function removeNonFrozen(oldGroups) {
       const newGroups = [];
       for (let i = 0; i < oldGroups.length; i ++) {
@@ -40,7 +42,6 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
             toKeep.push(person);
             if (people.get(person.name.toLowerCase()) != null) {
               people.delete(person.name.toLowerCase());
-              console.log("removing " + person.name + " from input copy");
             }
           }
         }
@@ -50,6 +51,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       return newGroups;
     }
 
+    // Handles the functionality for clicking the Make Teams button.
     function handleClick() {
       var button = document.getElementById("teamButton")
       if (inputNames.size > 0) {
@@ -101,6 +103,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
 
 
     const dragItem = useRef(null);
+    // Controls some functionality for dragging people between groups.
     function dragStart(e, memberID){ 
       console.log('dragStart called');
       dragItem.current = memberID;
@@ -111,11 +114,15 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       e.preventDefault();
     }
 
+
     
     const [showPopup, setShowPopUp] = useState(false);
     const popupComponent = showPopup && (
         <p class="sm:rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 " >You have made a group with 2 people who don't like each other.</p>
     );
+
+
+    // Handles placing a person into a group after they have been dragged.
 
     function drop(e,targetGroupIndex) {
       console.log('drop called');
@@ -152,11 +159,13 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     }
     
 
+    // Resets the groups after a user has selected to freeze a person.
     function setFreeze(member, newValue) {
       member.freeze = newValue;
       setGroups([...groups]);
     }
 
+    // Resposible for displaying the groups after there is an update to the people in them.
     function renderMembers(props) {
       console.log("render called")
       if(props.groups && props.groups.length > 0) {

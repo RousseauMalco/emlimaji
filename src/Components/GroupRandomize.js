@@ -1,12 +1,11 @@
 let tot_groups = 0;
 let desired_size = 0;
 
+// Groups together people who want to work together and then places them into groups.
 export function pairPreferences({people,input_size,groups}){
     desired_size = Number(input_size);
     let max_size = desired_size + 1;
-    // console.log("initial max size = " + (max_size));
     tot_groups = groups.length;
-    // console.log(groups);
 
     people.forEach(element => {
         if (!groupsContain(groups, element)) {
@@ -19,7 +18,6 @@ export function pairPreferences({people,input_size,groups}){
                     person.name.toLowerCase() !== element.name.toLowerCase() && 
                     person.dislike.toLowerCase() !== element.name.toLowerCase()) {
                         grouped.push(person);
-                        // console.log(element.name + " grouped with " + person.name);
                     }
                 });
         
@@ -45,10 +43,6 @@ export function pairPreferences({people,input_size,groups}){
                         let length = grouped.length;
                         for (let i = 0; i < length; i++) {
 
-                            // console.log("desired size: " + desired_size);
-                            // console.log("max size: " + max_size);
-                            // console.log("length " + (groups[position].length + 1));
-
                             if ((placementGroup.length + 1) < max_size) {
                                 placementGroup.push(grouped.pop());
                             }                       
@@ -58,8 +52,6 @@ export function pairPreferences({people,input_size,groups}){
                     if (counter > tot_groups) {
                         break;
                     }
-
-                    // console.log("failed to place together");
                 }
             }
         }
@@ -68,6 +60,8 @@ export function pairPreferences({people,input_size,groups}){
     return groupRandomizer(people, groups);
 }
 
+// Tries to place each person into a random group. If that group is already full, it then sequentially tries to place that person
+// into each of the groups until that person is placed.
 function groupRandomizer(people, existingGroups) {
     const newGroups = existingGroups;
     
@@ -88,21 +82,8 @@ function groupRandomizer(people, existingGroups) {
                     }
                 }
             }
-
-            if (!placed) {
-                for (const group of newGroups) {
-                    if (tryPlacingInGroup(group, person, desired_size)) {
-                        break;
-                    }
-                }
-            }
         }
     });
-    
-
-    // for (let i = 0; i < newGroups.length; i++) {
-    //     console.log(newGroups[i].join());
-    // }
 
     return newGroups;
 }
@@ -127,17 +108,18 @@ function tryPlacingInGroup(group, person, sizeLimit) {
     return true;
 }
 
+// Returns a random number between 0 and the input.
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
 
+// Returns whether the target person is already in the set of groups given.
 function groupsContain(groups, target) {
     let included = false;
     let i = 0;
     while (i < groups.length && !included) {
         if (groups[i].includes(target)) {
             included = true;
-            // console.log("already included");
             break;
         }
         i++;

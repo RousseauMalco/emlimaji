@@ -1,5 +1,6 @@
 import { csvRead } from "./csvRead";
 
+// Takes in a CSV file for use in reading.
 export function FileUpload({onRead}) {
     function handleFileChange(e) {
         console.log(e);

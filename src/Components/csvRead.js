@@ -1,3 +1,4 @@
+// Reads a CSV file and prepares a data structure of people to place in groups.
 export function csvRead(csv) {
     let papaparse = require('papaparse');
     let file = csv;
