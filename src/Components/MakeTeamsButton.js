@@ -25,6 +25,7 @@ const IconWithStatusButton = ({ freeze, freezeChange }) => {
   );
 };
 
+
 export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     const [groups, setGroups] = useState([]);
     let people = new Map(inputNames);
@@ -93,9 +94,11 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
           teams = pairPreferences({people:people,input_size:desired_size, groups:newGroups});
         }
 
+        setShowPopUp(false);
         setGroups(teams);
       }
     }
+
 
     const dragItem = useRef(null);
     function dragStart(e, memberID){ 
@@ -107,6 +110,12 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
     function dragOver(e) {
       e.preventDefault();
     }
+
+    
+    const [showPopup, setShowPopUp] = useState(false);
+    const popupComponent = showPopup && (
+        <p class="sm:rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 " >You have made a group with 2 people who don't like each other.</p>
+    );
 
     function drop(e,targetGroupIndex) {
       console.log('drop called');
@@ -131,20 +140,17 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       updatedGroups[targetGroupIndex] = updatedGroups[targetGroupIndex] || [];
       updatedGroups[targetGroupIndex].push(draggedMember);
 
+      let showPopup = false;
       updatedGroups[targetGroupIndex].forEach((person) => {
         if (person.dislike.toLowerCase().includes(draggedMember.name.toLowerCase()) || 
         draggedMember.dislike.toLowerCase().includes(draggedMember.name.toLowerCase())) {
-          <Popup trigger={draggedMember.dislike.toLowerCase().includes(draggedMember.name.toLowerCase())}
-                        modal nested>
-                        <p>
-                          You have made a group with 2 people don't like each other.
-                        </p>
-                        </Popup>
+          showPopup = true;
         }
-      });
-
+        setShowPopUp(showPopup);
       setGroups(updatedGroups);
+    })
     }
+    
 
     function setFreeze(member, newValue) {
       member.freeze = newValue;
@@ -165,10 +171,8 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                     onDrop={(e) => drop(e,groupIndex)}> 
                       {
                         group.map((member) => {
-                          // const textColor = member.freeze ? 'red' : 'white';
                           return (
                             <button 
-                              // style={{color:textColor}}
                               class="pointer-events-auto bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg font-semibold"
                               id={{member}}
                               draggable="true" 
@@ -202,9 +206,8 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
         <button class="bg-white h-12 px-20 w-autd font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-md" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
             Make new teams!
         </button> 
-     
+          {popupComponent}
           {renderMembers({groups: groups})}
-
       </div>
     ); 
   }
