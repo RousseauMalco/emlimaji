@@ -19,7 +19,7 @@ export function FileUpload({onRead}) {
     return (
         <div>
             <input 
-            class= "block w-half mx-auto mt-2 text-md text-white border border-gray-300 rounded-lg cursor-pointer bg-gray-600"
+            class="block w-half mx-auto mt-2 text-md text-white border border-gray-300 rounded-lg cursor-pointer bg-gray-700"
             type="file" 
             accept=".csv"
             onChange={handleFileChange} />   

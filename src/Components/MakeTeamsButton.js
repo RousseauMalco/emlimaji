@@ -101,7 +101,6 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       }
     }
 
-
     const dragItem = useRef(null);
     // Controls some functionality for dragging people between groups.
     function dragStart(e, memberID){ 
@@ -114,13 +113,10 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       e.preventDefault();
     }
 
-
-    
     const [showPopup, setShowPopUp] = useState(false);
     const popupComponent = showPopup && (
-        <p class="sm:rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 " >You have made a group with 2 people who don't like each other.</p>
+        <p class="sm:rounded-lg bg-[#dc2626] text-white font-semibold align-top m-2 relative px-3 pt-3 pb-3 w-auto shadow-xl ring-gray-900" >You have made a group with 2 people who don't like each other.</p>
     );
-
 
     // Handles placing a person into a group after they have been dragged.
 
@@ -173,7 +169,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
             <div class="grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
-                 <div class="sm:rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 " 
+                 <div class="sm:rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900" 
                     key={groupIndex} 
                     id={`group-${groupIndex}`} 
                     onDragOver={(e) => dragOver(e)} 

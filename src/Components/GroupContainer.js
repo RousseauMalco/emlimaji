@@ -8,7 +8,7 @@ export function GroupContainer(group) {
   const memberList = group.map((member) => <li>{member}</li>);
 
   return (
-    <div className="container">
+    <div class="container">
       <div>
         <h1>Array of Names</h1>
       </div>

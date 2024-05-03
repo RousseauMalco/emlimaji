@@ -28,67 +28,62 @@ function App() {
 
   return (
     
-    <div className="App">
-      
+    <div class="App">  
       {/* Header */}
-
-      <header className="bg-gray-800">
-        <div className="mx-auto flex max-w-5xl items-center justify-around p-1 container-md"> 
-          <img src={jimLogo} className=' object-fill h-16 w-16'/>
-          <p2 className="lg:text-3xl sm:text-xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
+      <header class="bg-gray-800">
+        <div class="mx-auto flex max-w-5xl items-center justify-around p-1 container-md"> 
+          <img src={jimLogo} class="object-fill h-16 w-16"/>
+          <p2 class="lg:text-3xl sm:text-xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
           <Popup trigger=
           {<button class="text-lg rounded-xl space-x-1 font-semibold hover:bg-gray-200 text-black bg-white py-1 lg:px-20 sm:px-10">About</button>}
           modal nested>
                 {
                     close => (
-                        <div className='modal'>
-                            <h2 className='font-semibold text-xl text-center mb-4'>Meet the team!</h2>
-                            <div className='content grid grid-cols-4 gap-3'>
+                        <div class='modal'>
+                            <h2 class="font-bold text-2xl text-sky-800 text-center mb-4">Meet the team!</h2>
+                            <div class="content grid grid-cols-4 gap-3">
                               <div id="Emma">
                                 <img src={EmmaEmlimaji} 
-                                className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                                class="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   />
-                                  <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
+                                  <Typography as="caption" variant="small" class="mt-2 text-center font-semibold">
                                     Emma
                                   </Typography>
                               </div>
                               <div id="Linh">
-                                <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                                <img class="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   src={Linh} />
-                                <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
+                                <Typography as="caption" variant="small" class="mt-2 text-center font-semibold">
                                     Linh
                                 </Typography>
                               </div>
                               <div id="Malcolm">
-                                <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                                <img class="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   src={Malcolm} />
-                                <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
+                                <Typography as="caption" variant="small" class="mt-2 text-center font-semibold">
                                     Malcolm
                                 </Typography>
                               </div>
                               <div id="Jim">
-                                <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
+                                <img class="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   src={Jim} />
-                                  <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
+                                  <Typography as="caption" variant="small" class="mt-2 text-center font-semibold">
                                     Jim
                                 </Typography>
                               </div>
-                              </div>
-                            <div>
-                            <button onClick={() => close() } className="bg-[#0c4a6e] outline outline-1 outline-slate-100 hover:bg-gray-400 rounded-2x1 text-white font-semibold py-1 px-10 shadow-lg mt-4">
-                              Close
-                            </button>
-                          
                           </div>
-                          </div>
+                          <button onClick={() => close() } class="bg-[#0c4a6e] outline outline-1 outline-slate-100 hover:bg-gray-400 rounded-2x1 text-white font-semibold py-1 px-10 shadow-lg mt-4">
+                            Close
+                          </button>                      
+                        </div>
                       )}
               </Popup>
               <Popup trigger={<button class="text-lg hover:bg-gray-200 rounded-xl space-x-1 font-semibold text-black bg-white py-1 lg:px-20 sm:px-10">Instructions</button>}
                         modal nested>
                           {
                             close => (
-                              <div className='modal'> 
-                                  <h1 class="font-semibold text-xl text-center">GroupMate Instructions</h1> 
+                              <div class="modal"> 
+                                  <h1 class="font-bold text-2xl text-sky-800 text-center">GroupMate Instructions</h1> 
                                   <ol class="ps-5 mt-2 space-y-1 list-decimal list-inside mb-5">
                                       <li>Make a copy of the template.</li>
                                       <li>The template contains questions for students’ names, who they want to work with, and who they do not want to work with.</li>
@@ -109,10 +104,10 @@ function App() {
 
       {/* Main Part of Screen - Body */}
 
-      <body className="bg-[#bae6fd] min-h-screen">
-        <div className="container lg:flex lg:flex-rows lg:items-stretch sm:items-center">
-          <div className="container realtive items-center lg:w-2/5 lg:mt-5">  
-            <p className="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
+      <body class="bg-[#bae6fd] min-h-screen">
+        <div class="container lg:flex lg:flex-row lg:items-stretch items-center justify-center">
+          <div class="container realtive items-center lg:w-2/5 sm:w-full lg:mt-5">  
+            <p class="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
               <FileUpload onRead={handleRead}/>
             <div class="flex flex-row mt-5 mx-10">
                 <div class="grow-0 m-1">
@@ -127,15 +122,16 @@ function App() {
                   }} />
               </div>
               <div class="lg:mt-60 sm:mt-10">
-                <p className="text-xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
+                <p class="text-xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
                 <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
               </div>
           </div>
-          <div className="container lg:w-3/5 items-center lg:m-5 sm:mt-2">
+          <div class="container lg:w-3/5 sm:w-full items-center justify-center mt-5">
             <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
           </div>
         </div>
       </body>
+
     </div>
   );
 }
