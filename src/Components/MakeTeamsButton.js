@@ -169,7 +169,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
             <div class="grid grid-cols-2">
               {
                 props.groups.map((group,groupIndex) =>
-                 <div class="sm:rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900" 
+                 <div class="rounded-lg bg-white align-top m-2 relative px-5 pt-5 pb-5 w-auto shadow-xl ring-gray-900 items-center justify-center" 
                     key={groupIndex} 
                     id={`group-${groupIndex}`} 
                     onDragOver={(e) => dragOver(e)} 
@@ -178,11 +178,11 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                         group.map((member) => {
                           return (
                             <button 
-                              class="pointer-events-auto bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg font-semibold"
+                              class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg"
                               id={{member}}
                               draggable="true" 
                               onDragStart={(e) => dragStart(e,member)}>
-                              <LuGripVertical color="808080" size={30} className="pointer-events-auto px-1 inline-block text-white rounded-lg font-semibold" />
+                              <LuGripVertical color="808080" size={30} className="pointer-events-auto px-1 inline-block"/>
                               {member.name}
                               <IconWithStatusButton freeze={member.freeze} freezeChange={(newValue) => setFreeze(member, newValue)} />
                             </button>
@@ -200,7 +200,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
       } else {
           return(
               <p>
-                  No teams yet
+                  No teams yet.
               </p>
           );
       }

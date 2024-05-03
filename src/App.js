@@ -1,5 +1,4 @@
 import jimLogo from './Components/jimLogo.png';
-// import './App.css';
 import { CSVTemplateLink } from './Components/CSVTemplateLink';
 import React, { useState } from 'react';
 import { FileUpload } from './Components/FileUpload';
@@ -9,7 +8,7 @@ import { MultipleChoice } from './Components/GroupOrNumMem';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Typography } from "@material-tailwind/react";
-import EmmaEmlimaji from './Components/EmmaEmlimaji.png';
+import Emma from './Components/Emma.png';
 import Linh from './Components/Linh.png';
 import Malcolm from './Components/Malcolm.png';
 import Jim from './Components/Jim.png';
@@ -19,7 +18,6 @@ function App() {
   const [userInput, setUserInput] = useState(4);
   const [selectedOption, setSelectedOption] = useState("Group Size");
   const [numUpdates, setNumUpdates] = useState(0);
-  // let numUpdates = 0;
 
   const handleRead = (value) => {
     setReadData(value);
@@ -29,7 +27,9 @@ function App() {
   return (
     
     <div class="App">  
+
       {/* Header */}
+
       <header class="bg-gray-800">
         <div class="mx-auto flex max-w-5xl items-center justify-around p-1 container-md"> 
           <img src={jimLogo} class="object-fill h-16 w-16"/>
@@ -43,7 +43,7 @@ function App() {
                             <h2 class="font-bold text-2xl text-sky-800 text-center mb-4">Meet the team!</h2>
                             <div class="content grid grid-cols-4 gap-3">
                               <div id="Emma">
-                                <img src={EmmaEmlimaji} 
+                                <img src={Emma} 
                                 class="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   />
                                   <Typography as="caption" variant="small" class="mt-2 text-center font-semibold">
@@ -106,10 +106,10 @@ function App() {
 
       <body class="bg-[#bae6fd] min-h-screen">
         <div class="container lg:flex lg:flex-row lg:items-stretch items-center justify-center">
-          <div class="container realtive items-center lg:w-2/5 sm:w-full lg:mt-5">  
+          <div class="container items-center lg:w-2/5 sm:w-full lg:mt-5">  
             <p class="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
               <FileUpload onRead={handleRead}/>
-            <div class="flex flex-row mt-5 mx-10">
+            <div class="flex flex-row mt-5 mx-10 items-center justify-center">
                 <div class="grow-0 m-1">
                     <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {
                       setNumUpdates(numUpdates + 1);
