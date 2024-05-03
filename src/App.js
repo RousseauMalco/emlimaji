@@ -8,9 +8,11 @@ import { GroupCustomizeTextField } from './Components/GroupCustomizeTextField';
 import { MultipleChoice } from './Components/GroupOrNumMem';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import EmmaEmlimaji from './Components/EmmaEmlimaji.png';
 import { Typography } from "@material-tailwind/react";
+import EmmaEmlimaji from './Components/EmmaEmlimaji.png';
 import Linh from './Components/Linh.png';
+import Malcolm from './Components/Malcolm.png';
+import Jim from './Components/Jim.png';
  
 function App() {
   const [readData, setReadData] = useState('');
@@ -31,39 +33,45 @@ function App() {
       {/* Header */}
 
       <header className="bg-gray-800">
-        <div className="mx-auto flex md:flex-cols max-w-5xl items-center justify-around p-1 container-md"> 
+        <div className="mx-auto flex max-w-5xl items-center justify-around p-1 container-md"> 
           <img src={jimLogo} className=' object-fill h-16 w-16'/>
-          <p2 className="text-3xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
+          <p2 className="lg:text-3xl sm:text-xl text-left m-0 text-white font-semibold">Welcome to GroupMate </p2>
           <Popup trigger=
-          {<button class="text-lg rounded-xl space-x-1 font-semibold hover:bg-gray-200 text-black bg-white py-1 px-20">About</button>}
+          {<button class="text-lg rounded-xl space-x-1 font-semibold hover:bg-gray-200 text-black bg-white py-1 lg:px-20 sm:px-10">About</button>}
           modal nested>
                 {
                     close => (
                         <div className='modal'>
                             <h2 className='font-semibold text-xl text-center mb-4'>Meet the team!</h2>
-                            <div className='content grid grid-cols-4 gap-4'>
-                              <div className="Emma">
+                            <div className='content grid grid-cols-4 gap-3'>
+                              <div id="Emma">
                                 <img src={EmmaEmlimaji} 
                                 className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   />
-                                  <Typography as="caption" variant="small" className="mt-2 text-center font-normal">
+                                  <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
                                     Emma
                                   </Typography>
                               </div>
-                              <div className="Linh">
+                              <div id="Linh">
                                 <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
                                   src={Linh} />
-                                <Typography as="caption" variant="small" className="mt-2 text-center font-normal">
+                                <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
                                     Linh
                                 </Typography>
                               </div>
-                              <div className="Malcolm">
+                              <div id="Malcolm">
                                 <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
-                                  src={EmmaEmlimaji} />
+                                  src={Malcolm} />
+                                <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
+                                    Malcolm
+                                </Typography>
                               </div>
-                              <div className="Jim">
+                              <div id="Jim">
                                 <img className="h-50 w-50 rounded-full object-cover object-center shadow-blue-gray-900/50"
-                                  src={EmmaEmlimaji} />
+                                  src={Jim} />
+                                  <Typography as="caption" variant="small" className="mt-2 text-center font-semibold">
+                                    Jim
+                                </Typography>
                               </div>
                               </div>
                             <div>
@@ -75,7 +83,7 @@ function App() {
                           </div>
                       )}
               </Popup>
-              <Popup trigger={<button class="text-lg hover:bg-gray-200 rounded-xl space-x-1 font-semibold text-black bg-white py-1 px-20">Instructions</button>}
+              <Popup trigger={<button class="text-lg hover:bg-gray-200 rounded-xl space-x-1 font-semibold text-black bg-white py-1 lg:px-20 sm:px-10">Instructions</button>}
                         modal nested>
                           {
                             close => (
@@ -102,33 +110,32 @@ function App() {
       {/* Main Part of Screen - Body */}
 
       <body className="bg-[#bae6fd] min-h-screen">
-      <div className="container flex flex-rows items-stretch align-baseline">
-        <div className="container realtive items-center w-2/5 mt-5">  
-          <p className="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
-            <FileUpload onRead={handleRead}/>
-          <div class='flex flex-row mt-5 mx-10'>
-              <div class='grow-0 m-1'>
-                  <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {
-                    setNumUpdates(numUpdates + 1);
-                    setSelectedOption(option);
-                    }} > </MultipleChoice>  
+        <div className="container lg:flex lg:flex-rows lg:items-stretch sm:items-center">
+          <div className="container realtive items-center lg:w-2/5 lg:mt-5">  
+            <p className="text-xl text-gray-700 mx-3 font-bold">Got your responses? Upload your CSV here: </p>
+              <FileUpload onRead={handleRead}/>
+            <div class="flex flex-row mt-5 mx-10">
+                <div class="grow-0 m-1">
+                    <MultipleChoice options={["Group Size","Number of groups"]} onAnswer={(option) => {
+                      setNumUpdates(numUpdates + 1);
+                      setSelectedOption(option);
+                      }} > </MultipleChoice>  
+                </div>
+                <GroupCustomizeTextField inputSize={userInput} onSizeChange={(newUserInput) => {
+                  setNumUpdates(numUpdates + 1);
+                  setUserInput(newUserInput);
+                  }} />
               </div>
-              <GroupCustomizeTextField inputSize={userInput} onSizeChange={(newUserInput) => {
-                setNumUpdates(numUpdates + 1);
-                setUserInput(newUserInput);
-                }} />
-            </div>
-            <div class="mt-60">
-              <p className="text-xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
-              <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
-            </div>
+              <div class="lg:mt-60 sm:mt-10">
+                <p className="text-xl text-gray-700 font-bold mb-2" style={{ whiteSpace: 'pre-wrap' }}>No CSV of responses?</p>
+                <CSVTemplateLink url = "https://drive.google.com/drive/folders/1p5LKcEG0COVpbGXtDMCPHTgQZdOk5osD?usp=sharing" />
+              </div>
+          </div>
+          <div className="container lg:w-3/5 items-center lg:m-5 sm:mt-2">
+            <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
+          </div>
         </div>
-        <div className = "container w-3/5 m-5">
-          <MakeTeamsButton inputNames={readData} userInput={userInput} option ={selectedOption} numUpdates={numUpdates}/>     
-        </div>
-      </div>
       </body>
-
     </div>
   );
 }
