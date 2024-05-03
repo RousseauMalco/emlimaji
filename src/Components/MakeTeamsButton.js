@@ -208,7 +208,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
 
     return (
      <div>
-        <button class="bg-white h-12 px-20 w-autd font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-md" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput === 0 || userInput === ""}>
+        <button class="bg-white h-12 px-20 w-autd font-semibold border border-gray-400 rounded sm:rounded-xl hover:bg-gray-200 shadow-md" id = "teamButton" onClick={handleClick} disabled={isNaN(userInput) || userInput <= 0 || userInput === ""}>
             Make new teams!
         </button> 
           {popupComponent}
