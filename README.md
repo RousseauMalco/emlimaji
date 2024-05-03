@@ -41,5 +41,6 @@ This is an app to help teachers and anyone who needs to form groups to make team
 * Too much emphasis on students’ preferences, only Yes or No 
 * No balancing between different types of people, no way to tell personality
 * Some familiarity with Google Forms goes a long way in ease of use
+* If the user specifies a number of groups that cannot be evenly distributed into, that number of groups will be generated, but there may be empty groups
 * Not well suited for phone screens
 * Items are left justified when you manually resize the screen
