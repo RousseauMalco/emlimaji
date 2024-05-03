@@ -178,7 +178,7 @@ export function MakeTeamsButton({inputNames, userInput, option, numUpdates}) {
                         group.map((member) => {
                           return (
                             <button 
-                              class="pointer-events-auto inline-block bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg"
+                              class="pointer-events-auto bg-sky-800 hover:bg-sky-950 px-2 py-1 text-white m-2 rounded-lg"
                               id={{member}}
                               draggable="true" 
                               onDragStart={(e) => dragStart(e,member)}>
